@@ -1,7 +1,8 @@
 
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Award, Pen } from "lucide-react";
+import { BookOpen, Award, Pen, ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Author = () => {
   return (
@@ -17,52 +18,79 @@ const Author = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <Card className="hover-lift">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          <Card className="hover-lift lg:col-span-1">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Pen className="text-emerald-600" />
-                About the Author
-              </CardTitle>
+              <CardTitle className="text-center">F. Scott Fitzgerald</CardTitle>
             </CardHeader>
-            <CardContent>
-              <p className="text-gray-700 leading-relaxed mb-4">
-                F. Scott Fitzgerald (1896-1940) was an American writer famous for writing about the 
-                Jazz Age of the 1920s. He lived during this exciting time and wrote about the parties, 
-                wealth, and problems of rich people in America.
+            <CardContent className="text-center">
+              <div className="mb-6">
+                <img 
+                  src="/lovable-uploads/e92f05a3-7a3c-420d-abdc-5ab022c64945.png" 
+                  alt="F. Scott Fitzgerald" 
+                  className="w-48 h-64 object-cover rounded-lg mx-auto shadow-lg"
+                />
+              </div>
+              <p className="text-gray-600 mb-4 text-sm">
+                (1896-1940)
               </p>
-              <p className="text-gray-700 leading-relaxed">
-                Fitzgerald struggled with money problems and drinking, which helped him understand both 
-                the glamorous and sad sides of American life. His own experiences influenced "The Great Gatsby," 
-                making the story feel real and meaningful.
-              </p>
+              <Button 
+                className="w-full bg-emerald-600 hover:bg-emerald-700"
+                onClick={() => window.open('https://en.wikipedia.org/wiki/F._Scott_Fitzgerald', '_blank')}
+              >
+                <ExternalLink size={16} className="mr-2" />
+                Read Full Biography
+              </Button>
             </CardContent>
           </Card>
 
-          <Card className="hover-lift">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BookOpen className="text-emerald-600" />
-                His Writing Style
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="border-l-4 border-emerald-300 pl-4">
-                  <h4 className="font-semibold text-gray-800">Beautiful Language</h4>
-                  <p className="text-gray-600">Fitzgerald writes with poetic, flowing sentences that paint vivid pictures</p>
+          <div className="lg:col-span-2 space-y-8">
+            <Card className="hover-lift">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Pen className="text-emerald-600" />
+                  About the Author
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-700 leading-relaxed mb-4">
+                  F. Scott Fitzgerald (1896-1940) was an American writer famous for writing about the 
+                  Jazz Age of the 1920s. He lived during this exciting time and wrote about the parties, 
+                  wealth, and problems of rich people in America.
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  Fitzgerald had money problems and struggled with drinking, which helped him understand both 
+                  the fun and sad sides of American life. His own life experiences made "The Great Gatsby" 
+                  feel real and meaningful.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="hover-lift">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <BookOpen className="text-emerald-600" />
+                  His Writing Style
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div className="border-l-4 border-emerald-300 pl-4">
+                    <h4 className="font-semibold text-gray-800">Beautiful Language</h4>
+                    <p className="text-gray-600">Fitzgerald writes with poetic, flowing sentences that paint clear pictures</p>
+                  </div>
+                  <div className="border-l-4 border-emerald-300 pl-4">
+                    <h4 className="font-semibold text-gray-800">Symbols and Hidden Meanings</h4>
+                    <p className="text-gray-600">He uses objects like the green light to represent bigger ideas</p>
+                  </div>
+                  <div className="border-l-4 border-emerald-300 pl-4">
+                    <h4 className="font-semibold text-gray-800">Shows Society's Problems</h4>
+                    <p className="text-gray-600">He shows both the beauty and ugliness of wealthy American society</p>
+                  </div>
                 </div>
-                <div className="border-l-4 border-emerald-300 pl-4">
-                  <h4 className="font-semibold text-gray-800">Symbols and Deeper Meaning</h4>
-                  <p className="text-gray-600">He uses objects like the green light to represent bigger ideas</p>
-                </div>
-                <div className="border-l-4 border-emerald-300 pl-4">
-                  <h4 className="font-semibold text-gray-800">Criticism of Society</h4>
-                  <p className="text-gray-600">He shows both the beauty and ugliness of wealthy American society</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         <Card className="hover-lift">
@@ -92,7 +120,7 @@ const Author = () => {
                 <div className="bg-emerald-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                   <Pen className="text-emerald-600" size={24} />
                 </div>
-                <h4 className="font-semibold mb-2">Still Relevant Today</h4>
+                <h4 className="font-semibold mb-2">Still Important Today</h4>
                 <p className="text-gray-600 text-sm">Themes about wealth and dreams still matter now</p>
               </div>
             </div>
