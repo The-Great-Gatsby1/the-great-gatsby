@@ -13,7 +13,7 @@ const Author = () => {
             Suzanne M. Williams
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Acclaimed author bringing authentic stories of courage and family to young adult literature
+            The author who wrote "Bull Rider" - a story about courage and family
           </p>
         </div>
 
@@ -27,10 +27,14 @@ const Author = () => {
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Suzanne M. Williams is a talented author who specializes in young adult fiction that explores themes of identity, family, and personal growth. Her writing often features authentic portrayals of rural American life and the challenges faced by teenagers navigating complex family dynamics.
+                Suzanne M. Williams writes books for teenagers. She likes to write about young people 
+                growing up and dealing with family problems. Her stories often take place in rural 
+                America, where people live on farms and in small towns.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                With "Bull Rider," Williams demonstrates her ability to craft compelling narratives that resonate with readers while addressing important themes about courage, tradition, and finding one's own path in life.
+                In "Bull Rider," Williams shows how good she is at telling stories that feel real. 
+                She writes about important topics like being brave, family traditions, and finding 
+                your own way in life.
               </p>
             </CardContent>
           </Card>
@@ -39,22 +43,22 @@ const Author = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BookOpen className="text-orange-600" />
-                Writing Style & Themes
+                How She Writes
               </CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="border-l-4 border-orange-300 pl-4">
-                  <h4 className="font-semibold text-gray-800">Authentic Voice</h4>
-                  <p className="text-gray-600">Williams writes with genuine understanding of rodeo culture and rural life</p>
+                  <h4 className="font-semibold text-gray-800">Real Voice</h4>
+                  <p className="text-gray-600">Williams understands rodeo life and writes about it in a true way</p>
                 </div>
                 <div className="border-l-4 border-orange-300 pl-4">
-                  <h4 className="font-semibold text-gray-800">Character Development</h4>
-                  <p className="text-gray-600">Complex, relatable characters facing real-world challenges</p>
+                  <h4 className="font-semibold text-gray-800">Good Characters</h4>
+                  <p className="text-gray-600">Her characters feel like real people with real problems</p>
                 </div>
                 <div className="border-l-4 border-orange-300 pl-4">
-                  <h4 className="font-semibold text-gray-800">Emotional Depth</h4>
-                  <p className="text-gray-600">Explores deep themes while maintaining accessibility for young readers</p>
+                  <h4 className="font-semibold text-gray-800">Deep Feelings</h4>
+                  <p className="text-gray-600">She writes about serious topics in a way young people can understand</p>
                 </div>
               </div>
             </CardContent>
@@ -65,7 +69,7 @@ const Author = () => {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Award className="text-orange-600" />
-              Impact of "Bull Rider"
+              Why "Bull Rider" Matters
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -74,22 +78,22 @@ const Author = () => {
                 <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                   <BookOpen className="text-orange-600" size={24} />
                 </div>
-                <h4 className="font-semibold mb-2">Cultural Authenticity</h4>
-                <p className="text-gray-600 text-sm">Provides genuine insight into rodeo culture and Western traditions</p>
+                <h4 className="font-semibold mb-2">Real Culture</h4>
+                <p className="text-gray-600 text-sm">Shows what rodeo life is really like</p>
               </div>
               <div className="text-center">
                 <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                   <Award className="text-orange-600" size={24} />
                 </div>
-                <h4 className="font-semibold mb-2">Literary Merit</h4>
-                <p className="text-gray-600 text-sm">Combines engaging storytelling with meaningful themes</p>
+                <h4 className="font-semibold mb-2">Good Story</h4>
+                <p className="text-gray-600 text-sm">Fun to read and teaches important lessons</p>
               </div>
               <div className="text-center">
                 <div className="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                   <Pen className="text-orange-600" size={24} />
                 </div>
-                <h4 className="font-semibold mb-2">Reader Connection</h4>
-                <p className="text-gray-600 text-sm">Resonates with readers facing their own coming-of-age challenges</p>
+                <h4 className="font-semibold mb-2">Connects with Readers</h4>
+                <p className="text-gray-600 text-sm">Helps readers who are facing their own growing-up challenges</p>
               </div>
             </div>
           </CardContent>

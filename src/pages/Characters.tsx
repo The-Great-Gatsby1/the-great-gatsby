@@ -7,34 +7,34 @@ const Characters = () => {
   const characters = [
     {
       name: "Cam O'Mara",
-      role: "Protagonist",
+      role: "Main Character",
       icon: Star,
-      description: "A fourteen-year-old boy struggling with his identity and place in his family's rodeo legacy. Cam faces the pressure of living up to his father's expectations while dealing with his own fears and desires.",
-      traits: ["Sensitive", "Intelligent", "Conflicted", "Brave"],
+      description: "A fourteen-year-old boy who is trying to figure out who he is. His family expects him to be a bull rider like his father, but Cam has his own fears and dreams.",
+      traits: ["Caring", "Smart", "Confused", "Brave"],
       color: "orange"
     },
     {
       name: "Ben O'Mara",
       role: "Father",
       icon: Shield,
-      description: "Cam's father and a former rodeo champion. Ben represents tradition and the pressure of family expectations. His relationship with Cam is complex, driven by love but complicated by his own disappointments.",
-      traits: ["Traditional", "Proud", "Demanding", "Loving"],
+      description: "Cam's dad who used to be a champion bull rider. Ben loves his son but puts a lot of pressure on him to follow the family tradition.",
+      traits: ["Old-fashioned", "Proud", "Tough", "Loving"],
       color: "blue"
     },
     {
       name: "Kit",
       role: "Mother Figure",
       icon: Heart,
-      description: "A supportive presence in Cam's life who provides emotional stability and understanding. She represents compassion and the importance of following one's own path.",
-      traits: ["Nurturing", "Understanding", "Wise", "Supportive"],
+      description: "A caring person in Cam's life who helps him feel better and understand himself. She shows him it's okay to be different.",
+      traits: ["Kind", "Understanding", "Wise", "Helpful"],
       color: "green"
     },
     {
-      name: "Supporting Characters",
+      name: "Other People",
       role: "Community",
       icon: User,
-      description: "The rodeo community, friends, and extended family who shape Cam's world and influence his journey of self-discovery.",
-      traits: ["Diverse", "Influential", "Authentic", "Complex"],
+      description: "The rodeo community, friends, and family members who are part of Cam's world and help shape his story.",
+      traits: ["Different", "Important", "Real", "Complex"],
       color: "purple"
     }
   ];
@@ -58,7 +58,7 @@ const Characters = () => {
             Characters
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Meet the compelling characters who bring the world of "Bull Rider" to life
+            Meet the people who make "Bull Rider" come to life
           </p>
         </div>
 
@@ -83,7 +83,7 @@ const Characters = () => {
                     {character.description}
                   </p>
                   <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">Key Traits:</h4>
+                    <h4 className="font-semibold mb-2 text-gray-800">What They're Like:</h4>
                     <div className="flex flex-wrap gap-2">
                       {character.traits.map((trait) => (
                         <span
@@ -103,20 +103,20 @@ const Characters = () => {
 
         <Card className="mt-12 hover-lift">
           <CardHeader>
-            <CardTitle className="text-center">Character Relationships</CardTitle>
+            <CardTitle className="text-center">How Characters Connect</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center space-y-4">
               <p className="text-gray-700 leading-relaxed">
-                The relationships between characters in "Bull Rider" form the emotional core of the story. 
-                Cam's struggle with his father's expectations, his connection with supportive figures like Kit, 
-                and his interactions with the broader rodeo community all contribute to his journey of self-discovery.
+                The relationships between characters in "Bull Rider" are what make the story so good. 
+                Cam's problems with his father's expectations, his friendship with Kit, 
+                and how he deals with the rodeo community all help him grow up and learn about himself.
               </p>
               <div className="bg-orange-50 p-6 rounded-lg">
-                <h4 className="font-semibold text-orange-800 mb-2">Central Conflict</h4>
+                <h4 className="font-semibold text-orange-800 mb-2">Main Problem</h4>
                 <p className="text-orange-700">
-                  The tension between tradition and individual choice drives the narrative, 
-                  as Cam must navigate between honoring his family's legacy and following his own path.
+                  The biggest conflict is between family tradition and being yourself. 
+                  Cam has to choose between making his family happy and following his own dreams.
                 </p>
               </div>
             </div>

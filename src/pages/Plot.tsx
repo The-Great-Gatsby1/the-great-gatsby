@@ -6,27 +6,27 @@ import { Play, ArrowRight, Target, CheckCircle } from "lucide-react";
 const Plot = () => {
   const plotPoints = [
     {
-      title: "Setup & Introduction",
+      title: "Beginning",
       icon: Play,
-      content: "We meet Cam O'Mara, a fourteen-year-old boy living in the shadow of his family's rodeo legacy. His father Ben is a former champion, and there's an expectation that Cam will follow in his footsteps.",
+      content: "We meet Cam O'Mara, a fourteen-year-old boy whose family expects him to be a bull rider. His father Ben was a champion, and everyone thinks Cam should follow in his footsteps.",
       color: "blue"
     },
     {
-      title: "Rising Action",
+      title: "Problems Build Up",
       icon: ArrowRight,
-      content: "Cam struggles with his fear of bull riding while dealing with family pressure. He faces internal conflict between wanting to please his father and following his own desires and abilities.",
+      content: "Cam is scared of bull riding but feels pressure from his family. He struggles between wanting to make his father happy and following his own feelings and abilities.",
       color: "orange"
     },
     {
-      title: "Climax",
+      title: "Biggest Moment",
       icon: Target,
-      content: "The story reaches its peak when Cam must confront his fears and make a crucial decision about his future, testing both his courage and his relationship with his father.",
+      content: "The story reaches its most exciting point when Cam has to face his fears and make a big decision about his future. This tests both his courage and his relationship with his father.",
       color: "red"
     },
     {
-      title: "Resolution",
+      title: "How It Ends",
       icon: CheckCircle,
-      content: "Cam finds his own path, learning that true courage isn't about meeting others' expectations but about being true to yourself while honoring family bonds.",
+      content: "Cam finds his own path and learns that real courage means being true to yourself while still loving your family.",
       color: "green"
     }
   ];
@@ -47,10 +47,10 @@ const Plot = () => {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
           <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4 font-[Playfair_Display]">
-            Plot Summary
+            What Happens in the Story
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Follow Cam's journey through courage, family expectations, and self-discovery
+            Follow Cam's journey through courage, family expectations, and finding himself
           </p>
         </div>
 
@@ -80,21 +80,21 @@ const Plot = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Card className="hover-lift">
             <CardHeader>
-              <CardTitle>Key Scenes</CardTitle>
+              <CardTitle>Important Scenes</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div className="border-l-4 border-orange-300 pl-4">
                   <h4 className="font-semibold">The First Ride</h4>
-                  <p className="text-gray-600 text-sm">Cam's initial encounter with bull riding sets the tone for his internal struggle</p>
+                  <p className="text-gray-600 text-sm">Cam's first time trying to ride a bull shows us his fears</p>
                 </div>
                 <div className="border-l-4 border-orange-300 pl-4">
-                  <h4 className="font-semibold">Father-Son Confrontation</h4>
-                  <p className="text-gray-600 text-sm">A pivotal moment where family expectations clash with personal desires</p>
+                  <h4 className="font-semibold">Fight with Father</h4>
+                  <p className="text-gray-600 text-sm">An important moment where family expectations clash with what Cam wants</p>
                 </div>
                 <div className="border-l-4 border-orange-300 pl-4">
-                  <h4 className="font-semibold">The Decision</h4>
-                  <p className="text-gray-600 text-sm">Cam must choose between tradition and his own path forward</p>
+                  <h4 className="font-semibold">The Big Choice</h4>
+                  <p className="text-gray-600 text-sm">Cam has to choose between tradition and his own path</p>
                 </div>
               </div>
             </CardContent>
@@ -102,18 +102,18 @@ const Plot = () => {
 
           <Card className="hover-lift">
             <CardHeader>
-              <CardTitle>Setting & Atmosphere</CardTitle>
+              <CardTitle>Where It Takes Place</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 leading-relaxed mb-4">
-                The story takes place in the American West, immersed in rodeo culture and rural traditions. 
-                The setting serves as both backdrop and metaphor for the challenges Cam faces.
+                The story happens in the American West, where rodeo culture and rural traditions are important. 
+                The setting helps show the challenges Cam faces.
               </p>
               <div className="bg-orange-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-orange-800 mb-2">Symbolic Elements</h4>
+                <h4 className="font-semibold text-orange-800 mb-2">What Things Mean</h4>
                 <p className="text-orange-700 text-sm">
-                  The rodeo arena represents both opportunity and danger, while the bulls symbolize 
-                  the fears and challenges that must be faced in growing up.
+                  The rodeo arena represents both opportunity and danger, while the bulls represent 
+                  the fears and challenges that everyone must face when growing up.
                 </p>
               </div>
             </CardContent>
