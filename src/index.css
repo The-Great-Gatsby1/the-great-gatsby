@@ -16,16 +16,16 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 30 100% 20%;
+    --primary: 160 84% 20%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 30 30% 85%;
+    --secondary: 160 60% 85%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --muted: 30 20% 92%;
+    --muted: 160 40% 92%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 25 100% 45%;
+    --accent: 160 100% 45%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
@@ -88,11 +88,11 @@
   }
   
   .western-bg {
-    background: linear-gradient(135deg, #8B4513 0%, #D2691E 30%, #CD853F  70%, #F4A460 100%);
+    background: linear-gradient(135deg, #1E9B8A 0%, #34D399 30%, #10B981 70%, #059669 100%);
   }
   
   .text-gradient {
-    background: linear-gradient(135deg, #8B4513, #D2691E);
+    background: linear-gradient(135deg, #059669, #10B981);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -104,7 +104,7 @@
   
   .hover-lift:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 25px -5px rgba(139, 69, 19, 0.1), 0 10px 10px -5px rgba(139, 69, 19, 0.04);
+    box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
   }
   
   .fade-in {

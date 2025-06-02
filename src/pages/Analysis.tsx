@@ -1,175 +1,131 @@
 
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookOpen, Lightbulb, Target, Quote, Eye, Pen } from "lucide-react";
+import { BookOpen, Quote, BookMarked, Lightbulb } from "lucide-react";
 
 const Analysis = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
       <Navigation />
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
           <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4 font-[Playfair_Display]">
-            Why This Book Is Good
+            Literary Analysis
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            A deeper look at the writing techniques and importance of "Bull Rider"
+            Examining the deeper elements and significance of "The Great Gatsby"
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <Card className="hover-lift fade-in">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <Card className="hover-lift">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Pen className="text-orange-600" />
-                How Williams Writes
+                <BookMarked className="text-emerald-600" />
+                Style and Language
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Story Voice</h4>
-                  <p className="text-gray-600 text-sm">Williams tells the story from an outside view that lets readers know Cam's thoughts and feelings while keeping the story fair.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">How Characters Talk</h4>
-                  <p className="text-gray-600 text-sm">Real dialogue that shows how people in rural Western communities actually speak, making the story feel true.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Story Speed</h4>
-                  <p className="text-gray-600 text-sm">Careful pacing that builds tension slowly, just like Cam's own journey of learning about himself.</p>
-                </div>
+              <p className="text-gray-700 leading-relaxed">
+                Fitzgerald's writing in "The Great Gatsby" is known for its beauty and poetic quality. 
+                He uses rich descriptions that appeal to all the senses - we see the colorful shirts, 
+                hear the music at parties, and feel the summer heat. His sentences flow with a musical 
+                quality that makes the book a pleasure to read.
+              </p>
+              <div className="mt-4 p-4 bg-emerald-50 rounded-md border border-emerald-100">
+                <h4 className="font-semibold text-emerald-700 mb-2">Famous Quote:</h4>
+                <p className="italic text-emerald-600">
+                  "So we beat on, boats against the current, borne back ceaselessly into the past."
+                </p>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover-lift fade-in" style={{ animationDelay: "0.1s" }}>
+          <Card className="hover-lift">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Eye className="text-orange-600" />
-                Symbols & Pictures
+                <Quote className="text-emerald-600" />
+                Symbolism
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Bulls as Symbols</h4>
-                  <p className="text-gray-600 text-sm">Bulls represent both the fears that must be faced and the dangerous expectations that can hurt people who aren't ready.</p>
+              <div className="space-y-3">
+                <div className="border-l-4 border-emerald-300 pl-4">
+                  <h4 className="font-semibold text-gray-800">The Green Light</h4>
+                  <p className="text-gray-600">Represents Gatsby's hopes and dreams - both Daisy and the American Dream</p>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">The Arena</h4>
-                  <p className="text-gray-600 text-sm">The rodeo arena represents life's challenges and how family expectations and personal failures happen in public.</p>
+                <div className="border-l-4 border-emerald-300 pl-4">
+                  <h4 className="font-semibold text-gray-800">The Valley of Ashes</h4>
+                  <p className="text-gray-600">A wasteland between wealthy areas that represents moral and social decay</p>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">Rural Setting</h4>
-                  <p className="text-gray-600 text-sm">The Western setting emphasizes themes of tradition, masculinity, and the tension between old and new ways of thinking.</p>
+                <div className="border-l-4 border-emerald-300 pl-4">
+                  <h4 className="font-semibold text-gray-800">The Eyes of Dr. T.J. Eckleburg</h4>
+                  <p className="text-gray-600">Billboard eyes that watch over the Valley of Ashes like God watching a morally empty world</p>
+                </div>
+                <div className="border-l-4 border-emerald-300 pl-4">
+                  <h4 className="font-semibold text-gray-800">Weather</h4>
+                  <p className="text-gray-600">Heat during tense scenes, rain during emotional moments - the weather matches the mood</p>
                 </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <Card className="mb-8 hover-lift">
+        <Card className="hover-lift mb-12">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Quote className="text-orange-600" />
-              How Characters Grow
+              <Lightbulb className="text-emerald-600" />
+              Narrative Perspective
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-700 leading-relaxed mb-4">
+              The story is told by Nick Carraway, who isn't the main character but observes everything. 
+              This choice is important because Nick is both inside the story (friends with Gatsby and Daisy) 
+              and outside it (watching and judging). He starts by saying he doesn't judge people but ends up 
+              judging the characters and their choices.
+            </p>
+            <p className="text-gray-700 leading-relaxed">
+              Nick isn't always a reliable narrator. Sometimes his views are colored by his own feelings 
+              about the people he's describing. This makes readers think more deeply about what's really happening.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card className="hover-lift">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <BookOpen className="text-emerald-600" />
+              Historical and Cultural Context
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold text-gray-800 mb-3">How Cam Changes</h4>
-                <div className="space-y-2">
-                  <div className="bg-blue-50 p-3 rounded border-l-4 border-blue-300">
-                    <p className="text-sm"><strong>Beginning:</strong> Unsure, scared, wanting approval</p>
-                  </div>
-                  <div className="bg-yellow-50 p-3 rounded border-l-4 border-yellow-300">
-                    <p className="text-sm"><strong>Middle:</strong> Confused, questioning, learning more about himself</p>
-                  </div>
-                  <div className="bg-green-50 p-3 rounded border-l-4 border-green-300">
-                    <p className="text-sm"><strong>End:</strong> Self-aware, confident in his choices, being himself</p>
-                  </div>
-                </div>
+                <h4 className="font-semibold mb-3 text-gray-800">The Jazz Age</h4>
+                <p className="text-gray-700 leading-relaxed text-sm">
+                  The story happens in the 1920s, nicknamed the "Jazz Age" or "Roaring Twenties." 
+                  This was a time of celebration after World War I, with wild parties, new music, 
+                  and economic boom. Gatsby's parties represent this carefree atmosphere.
+                </p>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-800 mb-3">Ben's Complexity</h4>
-                <p className="text-gray-600 text-sm mb-3">
-                  Ben isn't just a bad guy but a complex character dealing with his own disappointments and love for his son.
+                <h4 className="font-semibold mb-3 text-gray-800">Prohibition</h4>
+                <p className="text-gray-700 leading-relaxed text-sm">
+                  Alcohol was illegal during this time, leading to bootlegging (illegal alcohol sales) 
+                  and organized crime. Gatsby's mysterious wealth likely comes from illegal activities, 
+                  showing how Prohibition created new paths to wealth.
                 </p>
-                <ul className="text-gray-600 text-sm space-y-1">
-                  <li>• Shows differences between generations</li>
-                  <li>• Shows how love can become pressure</li>
-                  <li>• Shows growth and understanding</li>
-                  <li>• Shows the conflict between tradition and change</li>
-                </ul>
               </div>
             </div>
-          </CardContent>
-        </Card>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Card className="hover-lift">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Target className="text-orange-600" size={20} />
-                Why It's Important
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                "Bull Rider" adds to young adult literature by showing real rural Western culture while exploring themes everyone can relate to about identity and family.
+            <div className="mt-6 p-5 bg-emerald-50 rounded-lg">
+              <h4 className="font-semibold text-emerald-800 mb-2">Why This Book Matters</h4>
+              <p className="text-emerald-700">
+                "The Great Gatsby" captures a specific moment in American history while telling a timeless 
+                story about dreams, love, and social class. It helps us understand both 1920s America and 
+                universal human experiences. The book was not popular when first published but is now considered 
+                one of the greatest American novels ever written.
               </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover-lift">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <BookOpen className="text-orange-600" size={20} />
-                Cultural Impact
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                The book gives readers a look into rodeo culture and rural American life, helping people understand and appreciate different ways of life and family structures.
-              </p>
-            </CardContent>
-          </Card>
-
-          <Card className="hover-lift">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Lightbulb className="text-orange-600" size={20} />
-                Educational Value
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                Great for discussing growing-up themes, family relationships, cultural traditions, and the importance of being yourself.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-
-        <Card className="mt-8 hover-lift">
-          <CardHeader>
-            <CardTitle className="text-center">Why "Bull Rider" Connects with Readers</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-center">
-              <p className="text-gray-700 leading-relaxed mb-6">
-                Suzanne M. Williams has created a story that speaks to the experience everyone has of growing up and finding your place in the world. 
-                While the setting is specifically Western and the culture is rodeo-centered, the emotional truths at the heart of the story 
-                are ones that readers from all backgrounds can understand and relate to.
-              </p>
-              <div className="bg-gradient-to-r from-orange-100 to-yellow-100 p-6 rounded-lg">
-                <h4 className="font-semibold text-orange-800 mb-3">Final Thought</h4>
-                <p className="text-orange-700 italic">
-                  "Bull Rider" reminds us that the greatest courage isn't about conquering outside challenges, 
-                  but about having the bravery to be true to ourselves while honoring the people we love."
-                </p>
-              </div>
             </div>
           </CardContent>
         </Card>

@@ -8,25 +8,25 @@ const Plot = () => {
     {
       title: "Beginning",
       icon: Play,
-      content: "We meet Cam O'Mara, a fourteen-year-old boy whose family expects him to be a bull rider. His father Ben was a champion, and everyone thinks Cam should follow in his footsteps.",
+      content: "Nick Carraway moves to West Egg, Long Island, next door to the mysterious millionaire Jay Gatsby. Nick reconnects with his cousin Daisy and her husband Tom, who live across the bay in East Egg.",
       color: "blue"
     },
     {
-      title: "Problems Build Up",
+      title: "Rising Action",
       icon: ArrowRight,
-      content: "Cam is scared of bull riding but feels pressure from his family. He struggles between wanting to make his father happy and following his own feelings and abilities.",
-      color: "orange"
+      content: "Nick attends one of Gatsby's lavish parties and meets him. He learns Gatsby and Daisy were once in love, and Gatsby wants Nick to help reunite them. Nick arranges a tea for Daisy and Gatsby to meet again after five years apart.",
+      color: "teal"
     },
     {
-      title: "Biggest Moment",
+      title: "Climax",
       icon: Target,
-      content: "The story reaches its most exciting point when Cam has to face his fears and make a big decision about his future. This tests both his courage and his relationship with his father.",
+      content: "During a hot summer day in New York City, tensions explode. Tom confronts Gatsby about his relationship with Daisy. Driving Gatsby's car back home, Daisy accidentally hits and kills Tom's mistress Myrtle, but Gatsby takes the blame.",
       color: "red"
     },
     {
-      title: "How It Ends",
+      title: "Conclusion",
       icon: CheckCircle,
-      content: "Cam finds his own path and learns that real courage means being true to yourself while still loving your family.",
+      content: "Myrtle's husband George, believing Gatsby killed his wife, shoots Gatsby in his swimming pool and then himself. Despite Gatsby's wealth and parties, only Nick and Gatsby's father attend the funeral, showing how shallow Gatsby's relationships were.",
       color: "green"
     }
   ];
@@ -34,15 +34,15 @@ const Plot = () => {
   const getColorClasses = (color: string) => {
     const colors = {
       blue: "bg-blue-100 text-blue-600 border-blue-300",
-      orange: "bg-orange-100 text-orange-600 border-orange-300",
+      teal: "bg-teal-100 text-teal-600 border-teal-300",
       red: "bg-red-100 text-red-600 border-red-300",
       green: "bg-green-100 text-green-600 border-green-300"
     };
-    return colors[color as keyof typeof colors] || colors.orange;
+    return colors[color as keyof typeof colors] || colors.teal;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
       <Navigation />
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
@@ -50,7 +50,7 @@ const Plot = () => {
             What Happens in the Story
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Follow Cam's journey through courage, family expectations, and finding himself
+            Follow the journey through the summer of 1922 on Long Island
           </p>
         </div>
 
@@ -84,17 +84,17 @@ const Plot = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="border-l-4 border-orange-300 pl-4">
-                  <h4 className="font-semibold">The First Ride</h4>
-                  <p className="text-gray-600 text-sm">Cam's first time trying to ride a bull shows us his fears</p>
+                <div className="border-l-4 border-emerald-300 pl-4">
+                  <h4 className="font-semibold">The Green Light</h4>
+                  <p className="text-gray-600 text-sm">Gatsby stares at the green light across the bay, representing his dream of being with Daisy</p>
                 </div>
-                <div className="border-l-4 border-orange-300 pl-4">
-                  <h4 className="font-semibold">Fight with Father</h4>
-                  <p className="text-gray-600 text-sm">An important moment where family expectations clash with what Cam wants</p>
+                <div className="border-l-4 border-emerald-300 pl-4">
+                  <h4 className="font-semibold">The Reunion</h4>
+                  <p className="text-gray-600 text-sm">When Gatsby and Daisy meet again for the first time in five years at Nick's house</p>
                 </div>
-                <div className="border-l-4 border-orange-300 pl-4">
-                  <h4 className="font-semibold">The Big Choice</h4>
-                  <p className="text-gray-600 text-sm">Cam has to choose between tradition and his own path</p>
+                <div className="border-l-4 border-emerald-300 pl-4">
+                  <h4 className="font-semibold">The Plaza Hotel Argument</h4>
+                  <p className="text-gray-600 text-sm">The confrontation between Gatsby and Tom over Daisy that changes everything</p>
                 </div>
               </div>
             </CardContent>
@@ -102,18 +102,19 @@ const Plot = () => {
 
           <Card className="hover-lift">
             <CardHeader>
-              <CardTitle>Where It Takes Place</CardTitle>
+              <CardTitle>Setting and Time</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 leading-relaxed mb-4">
-                The story happens in the American West, where rodeo culture and rural traditions are important. 
-                The setting helps show the challenges Cam faces.
+                "The Great Gatsby" happens in New York City and Long Island during the summer of 1922. 
+                This was during the "Jazz Age" or "Roaring Twenties," when America was celebrating 
+                after World War I with wild parties, new music, and economic growth.
               </p>
-              <div className="bg-orange-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-orange-800 mb-2">What Things Mean</h4>
-                <p className="text-orange-700 text-sm">
-                  The rodeo arena represents both opportunity and danger, while the bulls represent 
-                  the fears and challenges that everyone must face when growing up.
+              <div className="bg-emerald-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-emerald-800 mb-2">Important Places</h4>
+                <p className="text-emerald-700 text-sm">
+                  East Egg (old money), West Egg (new money), and the Valley of Ashes (poverty) 
+                  show the different social classes in America and how they're separated.
                 </p>
               </div>
             </CardContent>

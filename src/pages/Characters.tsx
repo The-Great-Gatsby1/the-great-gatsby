@@ -6,51 +6,51 @@ import { User, Heart, Shield, Star } from "lucide-react";
 const Characters = () => {
   const characters = [
     {
-      name: "Cam O'Mara",
+      name: "Jay Gatsby",
       role: "Main Character",
       icon: Star,
-      description: "A fourteen-year-old boy who is trying to figure out who he is. His family expects him to be a bull rider like his father, but Cam has his own fears and dreams.",
-      traits: ["Caring", "Smart", "Confused", "Brave"],
-      color: "orange"
+      description: "A mysterious millionaire who throws lavish parties. Gatsby made his money to win back his old love, Daisy. He represents the American Dream and its problems.",
+      traits: ["Hopeful", "Mysterious", "Romantic", "Ambitious"],
+      color: "emerald"
     },
     {
-      name: "Ben O'Mara",
-      role: "Father",
+      name: "Nick Carraway",
+      role: "Narrator",
       icon: Shield,
-      description: "Cam's dad who used to be a champion bull rider. Ben loves his son but puts a lot of pressure on him to follow the family tradition.",
-      traits: ["Old-fashioned", "Proud", "Tough", "Loving"],
+      description: "Our storyteller who moves next door to Gatsby. Nick is honest and observant, watching the drama unfold around him while trying to understand everyone.",
+      traits: ["Honest", "Observant", "Judgmental", "Thoughtful"],
       color: "blue"
     },
     {
-      name: "Kit",
-      role: "Mother Figure",
+      name: "Daisy Buchanan",
+      role: "Gatsby's Dream",
       icon: Heart,
-      description: "A caring person in Cam's life who helps him feel better and understand himself. She shows him it's okay to be different.",
-      traits: ["Kind", "Understanding", "Wise", "Helpful"],
-      color: "green"
+      description: "Gatsby's love interest who married Tom Buchanan for money. She's beautiful and charming but selfish and careless with others' feelings.",
+      traits: ["Beautiful", "Careless", "Selfish", "Charming"],
+      color: "teal"
     },
     {
-      name: "Other People",
-      role: "Community",
+      name: "Tom Buchanan",
+      role: "Antagonist",
       icon: User,
-      description: "The rodeo community, friends, and family members who are part of Cam's world and help shape his story.",
-      traits: ["Different", "Important", "Real", "Complex"],
+      description: "Daisy's wealthy, unfaithful husband. Tom is powerful, aggressive, and represents old money and privilege in America.",
+      traits: ["Powerful", "Arrogant", "Cruel", "Privileged"],
       color: "purple"
     }
   ];
 
   const getColorClasses = (color: string) => {
     const colors = {
-      orange: "bg-orange-100 text-orange-600 border-orange-300",
+      emerald: "bg-emerald-100 text-emerald-600 border-emerald-300",
       blue: "bg-blue-100 text-blue-600 border-blue-300",
-      green: "bg-green-100 text-green-600 border-green-300",
+      teal: "bg-teal-100 text-teal-600 border-teal-300",
       purple: "bg-purple-100 text-purple-600 border-purple-300"
     };
-    return colors[color as keyof typeof colors] || colors.orange;
+    return colors[color as keyof typeof colors] || colors.emerald;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
       <Navigation />
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
@@ -58,7 +58,7 @@ const Characters = () => {
             Characters
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Meet the people who make "Bull Rider" come to life
+            Meet the key people who bring "The Great Gatsby" to life
           </p>
         </div>
 
@@ -108,15 +108,16 @@ const Characters = () => {
           <CardContent>
             <div className="text-center space-y-4">
               <p className="text-gray-700 leading-relaxed">
-                The relationships between characters in "Bull Rider" are what make the story so good. 
-                Cam's problems with his father's expectations, his friendship with Kit, 
-                and how he deals with the rodeo community all help him grow up and learn about himself.
+                The relationships between characters in "The Great Gatsby" show the different sides of 1920s 
+                American society. Each character represents something bigger - old money, new money, 
+                the American Dream, or the moral center watching it all.
               </p>
-              <div className="bg-orange-50 p-6 rounded-lg">
-                <h4 className="font-semibold text-orange-800 mb-2">Main Problem</h4>
-                <p className="text-orange-700">
-                  The biggest conflict is between family tradition and being yourself. 
-                  Cam has to choose between making his family happy and following his own dreams.
+              <div className="bg-emerald-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-emerald-800 mb-2">Main Conflicts</h4>
+                <p className="text-emerald-700">
+                  The biggest problems are between Gatsby (new money) and Tom (old money), 
+                  both fighting over Daisy. This shows the clash between different social classes 
+                  and how money affects relationships.
                 </p>
               </div>
             </div>

@@ -6,87 +6,87 @@ import { Heart, Shield, Star, Users, Compass, Award } from "lucide-react";
 const Themes = () => {
   const themes = [
     {
-      title: "Growing Up",
+      title: "The American Dream",
       icon: Star,
-      description: "Cam's journey from being a teenager to becoming a young adult. He learns to make his own decisions and figure out who he is, separate from what his family wants.",
+      description: "The book looks at whether anyone can become successful in America through hard work. Gatsby gets rich, but can't win acceptance from old-money families.",
       examples: [
-        "Cam's struggle with who he wants to be",
-        "Learning to make his own choices",
-        "Developing his own values and beliefs"
+        "Gatsby's rise from poverty to wealth",
+        "The green light representing hope and dreams",
+        "Gatsby's failure despite his money"
+      ],
+      color: "emerald"
+    },
+    {
+      title: "Money and Social Class",
+      icon: Shield,
+      description: "Different types of wealth - old money (inherited) versus new money (earned) - and how they affect relationships and society. The book shows how money doesn't guarantee happiness.",
+      examples: [
+        "East Egg (old money) versus West Egg (new money)",
+        "Tom and Daisy's carelessness with others",
+        "The Valley of Ashes showing extreme poverty"
       ],
       color: "blue"
     },
     {
-      title: "Family Expectations vs. Personal Choice",
-      icon: Shield,
-      description: "The conflict between doing what your family wants and following your own dreams. The story shows how family traditions can both help and hurt personal growth.",
+      title: "Love and Dreams",
+      icon: Heart,
+      description: "Gatsby's dream of being with Daisy represents how people hold onto impossible dreams. His love for Daisy is more about what she represents than who she really is.",
       examples: [
-        "Ben wanting Cam to be a bull rider",
-        "The importance of family tradition in rodeo culture",
-        "Cam's struggle to please his father while being true to himself"
-      ],
-      color: "orange"
-    },
-    {
-      title: "Courage and Fear",
-      icon: Award,
-      description: "Looking at different types of bravery - physical courage needed for bull riding and emotional courage to stand up for what you believe in.",
-      examples: [
-        "Physical bravery needed for bull riding",
-        "Emotional courage to disappoint family",
-        "The courage to be yourself"
+        "Gatsby's idealized view of Daisy",
+        "The green light as Gatsby's dream",
+        "The failure of reality to match our dreams"
       ],
       color: "red"
     },
     {
-      title: "Finding Yourself",
+      title: "Time and the Past",
       icon: Compass,
-      description: "Cam's process of discovering who he really is beyond what others expect. He learns that identity comes from inside, not from what others think.",
+      description: "Gatsby believes he can repeat the past and recapture his relationship with Daisy, but learns that time changes everything and people can't go backwards.",
       examples: [
-        "Questioning life paths others chose for you",
-        "Discovering personal strengths and interests",
-        "Understanding that your worth isn't tied to others' approval"
+        "\"Can't repeat the past? Why of course you can!\"",
+        "The old clock knocking over during Daisy and Gatsby's reunion",
+        "Gatsby's inability to see Daisy as she really is now"
       ],
-      color: "green"
+      color: "teal"
     },
     {
-      title: "Father-Son Relationships",
-      icon: Heart,
-      description: "The complex relationship between fathers and sons, including love, disappointment, understanding, and the challenge of talking across generations.",
+      title: "Appearance vs. Reality",
+      icon: Users,
+      description: "Many characters in the story present false versions of themselves. The gap between who people seem to be and who they really are is a major theme.",
       examples: [
-        "Ben's struggle to connect with Cam",
-        "Differences in values between generations",
-        "Learning to love and accept each other as individuals"
+        "Gatsby's invented background story",
+        "The empty grandeur of Gatsby's parties",
+        "Daisy and Tom's flawed marriage behind their wealth"
       ],
       color: "purple"
     },
     {
-      title: "Tradition vs. Change",
-      icon: Users,
-      description: "The balance between keeping cultural traditions and allowing for personal growth and change within family and community.",
+      title: "Moral Emptiness",
+      icon: Award,
+      description: "The Jazz Age's focus on parties and money hides an emptiness underneath. The characters lack real purpose or moral guidance.",
       examples: [
-        "Rodeo as a cultural tradition",
-        "Changing ideas about masculinity and success",
-        "Adapting traditions to fit individual needs"
+        "The empty houses and meaningless parties",
+        "Tom and Daisy \"retreating into their money\"",
+        "The eyes of Dr. T.J. Eckleburg watching over the moral wasteland"
       ],
-      color: "teal"
+      color: "indigo"
     }
   ];
 
   const getColorClasses = (color: string) => {
     const colors = {
+      emerald: "bg-emerald-100 text-emerald-600 border-emerald-300",
       blue: "bg-blue-100 text-blue-600 border-blue-300",
-      orange: "bg-orange-100 text-orange-600 border-orange-300",
       red: "bg-red-100 text-red-600 border-red-300",
-      green: "bg-green-100 text-green-600 border-green-300",
+      teal: "bg-teal-100 text-teal-600 border-teal-300",
       purple: "bg-purple-100 text-purple-600 border-purple-300",
-      teal: "bg-teal-100 text-teal-600 border-teal-300"
+      indigo: "bg-indigo-100 text-indigo-600 border-indigo-300"
     };
-    return colors[color as keyof typeof colors] || colors.orange;
+    return colors[color as keyof typeof colors] || colors.emerald;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-yellow-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
       <Navigation />
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
@@ -94,7 +94,7 @@ const Themes = () => {
             Big Ideas in the Story
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Explore the deeper meanings and important themes that make "Bull Rider" connect with readers
+            Explore the deeper meanings and important themes in "The Great Gatsby"
           </p>
         </div>
 
@@ -141,27 +141,25 @@ const Themes = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold mb-3 text-gray-800">Everyone Can Relate</h4>
+                <h4 className="font-semibold mb-3 text-gray-800">Still Relevant Today</h4>
                 <p className="text-gray-700 leading-relaxed text-sm">
-                  These themes connect with readers because they show experiences everyone has: 
-                  trying to find out who you are, dealing with family expectations, 
-                  and having the courage to be yourself.
+                  These themes connect with readers today because we still care about the American Dream, 
+                  social differences, and the emptiness that can come with focusing too much on money and status.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-3 text-gray-800">Why It's Good Literature</h4>
+                <h4 className="font-semibold mb-3 text-gray-800">Why It's a Classic</h4>
                 <p className="text-gray-700 leading-relaxed text-sm">
-                  Williams puts these themes together skillfully, creating a story that works 
-                  on many levels - as an exciting story about rodeo culture and as a deeper 
-                  look at growing up and family relationships.
+                  Fitzgerald weaves these themes together with beautiful writing and unforgettable symbols 
+                  like the green light, the eyes of Dr. T.J. Eckleburg, and the Valley of Ashes.
                 </p>
               </div>
             </div>
-            <div className="mt-6 bg-orange-50 p-6 rounded-lg">
-              <h4 className="font-semibold text-orange-800 mb-2 text-center">Main Message</h4>
-              <p className="text-orange-700 text-center">
-                "Bull Rider" shows us that real courage isn't about meeting others' expectations, 
-                but about having the bravery to be yourself while still respecting family and tradition.
+            <div className="mt-6 bg-emerald-50 p-6 rounded-lg">
+              <h4 className="font-semibold text-emerald-800 mb-2 text-center">Main Message</h4>
+              <p className="text-emerald-700 text-center">
+                "The Great Gatsby" shows how the American Dream can fail, and how chasing money and status 
+                alone leaves people empty. It warns us about building our dreams on illusions rather than reality.
               </p>
             </div>
           </CardContent>
