@@ -11,7 +11,8 @@ const Characters = () => {
       color: "emerald",
       role: "Main Character",
       description: "A rich, mysterious man who throws huge parties to try to win back his lost love, Daisy.",
-      traits: ["Hopeful", "Wealthy", "Mysterious", "Romantic"]
+      traits: ["Hopeful", "Wealthy", "Mysterious", "Romantic"],
+      image: "/lovable-uploads/e89e38e7-465a-4b7f-a2a7-a527ba83ce99.png"
     },
     {
       name: "Daisy Buchanan",
@@ -19,7 +20,8 @@ const Characters = () => {
       color: "pink",
       role: "Gatsby's Love",
       description: "A beautiful, wealthy woman who is married to Tom but was Gatsby's girlfriend years ago.",
-      traits: ["Beautiful", "Careless", "Wealthy", "Charming"]
+      traits: ["Beautiful", "Careless", "Wealthy", "Charming"],
+      image: "/lovable-uploads/97d253c9-9e39-44de-aa39-b1edab547c29.png"
     },
     {
       name: "Nick Carraway",
@@ -27,7 +29,8 @@ const Characters = () => {
       color: "blue",
       role: "Narrator",
       description: "The person telling the story. He lives next to Gatsby and watches everything happen.",
-      traits: ["Honest", "Observer", "Thoughtful", "Outsider"]
+      traits: ["Honest", "Observer", "Thoughtful", "Outsider"],
+      image: "/lovable-uploads/2eb8edbc-c815-46a0-8d43-4698ef0410ea.png"
     },
     {
       name: "Tom Buchanan",
@@ -35,7 +38,8 @@ const Characters = () => {
       color: "red",
       role: "Daisy's Husband",
       description: "Daisy's rich, powerful husband who is mean and thinks he's better than everyone else.",
-      traits: ["Wealthy", "Arrogant", "Strong", "Unfaithful"]
+      traits: ["Wealthy", "Arrogant", "Strong", "Unfaithful"],
+      image: "/lovable-uploads/abbd58a8-7b3d-4c72-b45c-28abb802ae65.png"
     },
     {
       name: "Jordan Baker",
@@ -43,7 +47,8 @@ const Characters = () => {
       color: "purple",
       role: "Daisy's Friend",
       description: "A professional golfer and Daisy's friend who becomes involved with Nick.",
-      traits: ["Athletic", "Dishonest", "Independent", "Cynical"]
+      traits: ["Athletic", "Dishonest", "Independent", "Cynical"],
+      image: "/lovable-uploads/c4aa98ad-bb1f-44b4-8ab2-d67b7d41cb04.png"
     },
     {
       name: "Myrtle Wilson",
@@ -51,7 +56,8 @@ const Characters = () => {
       color: "orange",
       role: "Tom's Mistress",
       description: "A woman from a poor area who has an affair with Tom Buchanan.",
-      traits: ["Desperate", "Passionate", "Working-class", "Dreamer"]
+      traits: ["Desperate", "Passionate", "Working-class", "Dreamer"],
+      image: "/lovable-uploads/def3cd7f-f296-4cec-be53-71d45ee72060.png"
     }
   ];
 
@@ -68,14 +74,15 @@ const Characters = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
+    <div className="min-h-screen bg-black">
       <Navigation />
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4 font-[Playfair_Display]">
-            Characters
+          <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 mb-4 font-[Playfair_Display] art-deco-title">
+            CHARACTERS
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Meet the people in "The Great Gatsby" and learn what makes them important
           </p>
         </div>
@@ -86,29 +93,36 @@ const Characters = () => {
             return (
               <Card 
                 key={character.name} 
-                className={`hover-lift enhanced-card ${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}`}
+                className={`art-deco-card hover-lift bg-black/80 border-yellow-500/30 backdrop-blur-sm ${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardHeader className="text-center">
-                  <div className={`bg-gradient-to-br ${getColorClasses(character.color)} rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4 border-2`}>
-                    <IconComponent size={32} />
+                  <div className="relative w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-yellow-500/50">
+                    <img 
+                      src={character.image} 
+                      alt={character.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
-                  <CardTitle className="text-xl font-bold">{character.name}</CardTitle>
-                  <p className="text-sm font-medium text-gray-500 uppercase tracking-wide">
+                  <CardTitle className="text-xl font-bold text-yellow-400 font-[Playfair_Display]">
+                    {character.name}
+                  </CardTitle>
+                  <p className="text-sm font-medium text-yellow-300/80 uppercase tracking-wide">
                     {character.role}
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-300 leading-relaxed mb-4">
                     {character.description}
                   </p>
                   <div className="space-y-2">
-                    <h4 className="font-semibold text-gray-800 text-sm">Key Traits:</h4>
+                    <h4 className="font-semibold text-yellow-400 text-sm">Key Traits:</h4>
                     <div className="flex flex-wrap gap-2">
                       {character.traits.map((trait) => (
                         <span 
                           key={trait}
-                          className={`bg-gradient-to-r ${getColorClasses(character.color)} px-3 py-1 rounded-full text-xs font-medium border`}
+                          className="bg-yellow-500/20 border border-yellow-500/30 text-yellow-300 px-3 py-1 rounded-full text-xs font-medium"
                         >
                           {trait}
                         </span>
@@ -121,46 +135,46 @@ const Characters = () => {
           })}
         </div>
 
-        <Card className="mt-12 hover-lift enhanced-card">
+        <Card className="mt-12 hover-lift art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-center justify-center">
-              <Users2 className="text-emerald-600" />
+            <CardTitle className="flex items-center gap-2 text-center justify-center text-yellow-400 font-[Playfair_Display]">
+              <Users2 className="text-yellow-400" />
               Character Relationships
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
-                <h4 className="font-semibold text-lg text-gray-800">Love Triangle</h4>
+                <h4 className="font-semibold text-lg text-yellow-400">Love Triangle</h4>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                    <span className="text-gray-700">Gatsby loves Daisy</span>
+                    <span className="text-gray-300">Gatsby loves Daisy</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
-                    <span className="text-gray-700">Daisy is married to Tom</span>
+                    <span className="text-gray-300">Daisy is married to Tom</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-700">Tom has an affair with Myrtle</span>
+                    <span className="text-gray-300">Tom has an affair with Myrtle</span>
                   </div>
                 </div>
               </div>
               <div className="space-y-4">
-                <h4 className="font-semibold text-lg text-gray-800">Friendships</h4>
+                <h4 className="font-semibold text-lg text-yellow-400">Friendships</h4>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-700">Nick is Gatsby's neighbor and friend</span>
+                    <span className="text-gray-300">Nick is Gatsby's neighbor and friend</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                    <span className="text-gray-700">Jordan is Daisy's best friend</span>
+                    <span className="text-gray-300">Jordan is Daisy's best friend</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-700">Nick and Jordan date briefly</span>
+                    <span className="text-gray-300">Nick and Jordan date briefly</span>
                   </div>
                 </div>
               </div>
