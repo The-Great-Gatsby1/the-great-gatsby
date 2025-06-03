@@ -10,6 +10,7 @@ import Characters from "./pages/Characters";
 import Plot from "./pages/Plot";
 import Themes from "./pages/Themes";
 import Analysis from "./pages/Analysis";
+import Game from "./pages/Game";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/plot" element={<Plot />} />
           <Route path="/themes" element={<Themes />} />
           <Route path="/analysis" element={<Analysis />} />
+          <Route path="/game" element={<Game />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

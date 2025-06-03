@@ -2,31 +2,49 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Play, ArrowRight, Target, CheckCircle } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const Plot = () => {
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.from(".plot-card", {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power2.out"
+    });
+  }, []);
+
   const plotPoints = [
     {
-      title: "Beginning",
+      title: "How It Starts",
       icon: Play,
-      content: "Nick Carraway moves to West Egg, Long Island, next door to the mysterious millionaire Jay Gatsby. Nick reconnects with his cousin Daisy and her husband Tom, who live across the bay in East Egg.",
+      content: "Nick moves next to a rich man named Gatsby. Nick visits his cousin Daisy and her mean husband Tom. Gatsby throws big parties hoping Daisy will come.",
+      detail: "Nick is our storyteller. He sees everything that happens and tells us about it.",
       color: "blue"
     },
     {
-      title: "Rising Action",
+      title: "Things Get Exciting",
       icon: ArrowRight,
-      content: "Nick attends one of Gatsby's lavish parties and meets him. He learns Gatsby and Daisy were once in love, and Gatsby wants Nick to help reunite them. Nick arranges a tea for Daisy and Gatsby to meet again after five years apart.",
+      content: "Nick helps Gatsby meet Daisy again after 5 years apart. They used to love each other. Gatsby bought his big house just to be near her.",
+      detail: "Gatsby has been waiting and hoping for this moment for five whole years!",
       color: "teal"
     },
     {
-      title: "Climax",
+      title: "Everything Goes Wrong",
       icon: Target,
-      content: "During a hot summer day in New York City, tensions explode. Tom confronts Gatsby about his relationship with Daisy. Driving Gatsby's car back home, Daisy accidentally hits and kills Tom's mistress Myrtle, but Gatsby takes the blame.",
+      content: "On a very hot day, Tom finds out about Gatsby and Daisy. They have a big fight. While driving home, Daisy accidentally hits and kills a woman with Gatsby's car.",
+      detail: "The woman who dies is Tom's girlfriend. Her husband thinks Gatsby was driving.",
       color: "red"
     },
     {
-      title: "Conclusion",
+      title: "Sad Ending",
       icon: CheckCircle,
-      content: "Myrtle's husband George, believing Gatsby killed his wife, shoots Gatsby in his swimming pool and then himself. Despite Gatsby's wealth and parties, only Nick and Gatsby's father attend the funeral, showing how shallow Gatsby's relationships were.",
+      content: "The dead woman's husband shoots Gatsby. Even though Gatsby was rich and famous, only Nick and Gatsby's dad come to his funeral. Everyone else forgot about him.",
+      detail: "This shows that all of Gatsby's party friends weren't real friends at all.",
       color: "green"
     }
   ];
@@ -42,7 +60,7 @@ const Plot = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
+    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
       <Navigation />
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
@@ -50,7 +68,7 @@ const Plot = () => {
             What Happens in the Story
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Follow the journey through the summer of 1922 on Long Island
+            Follow along with the summer of 1922 on Long Island
           </p>
         </div>
 
@@ -58,19 +76,24 @@ const Plot = () => {
           {plotPoints.map((point, index) => {
             const IconComponent = point.icon;
             return (
-              <Card key={point.title} className="hover-lift fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={point.title} className="plot-card hover-lift group cursor-pointer">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${getColorClasses(point.color)}`}>
+                    <div className={`p-2 rounded-lg ${getColorClasses(point.color)} group-hover:scale-110 transition-transform`}>
                       <IconComponent size={24} />
                     </div>
                     {point.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed mb-4">
                     {point.content}
                   </p>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-emerald-50 p-3 rounded-lg border-l-4 border-emerald-300">
+                    <p className="text-emerald-700 text-sm font-medium">
+                      💡 {point.detail}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             );
@@ -78,43 +101,43 @@ const Plot = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="hover-lift">
+          <Card className="hover-lift group">
             <CardHeader>
-              <CardTitle>Important Scenes</CardTitle>
+              <CardTitle>Cool Scenes to Remember</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="border-l-4 border-emerald-300 pl-4">
-                  <h4 className="font-semibold">The Green Light</h4>
-                  <p className="text-gray-600 text-sm">Gatsby stares at the green light across the bay, representing his dream of being with Daisy</p>
+                <div className="border-l-4 border-emerald-300 pl-4 group-hover:border-emerald-500 transition-colors">
+                  <h4 className="font-semibold cursor-help">The Green Light ✨</h4>
+                  <p className="text-gray-600 text-sm">Gatsby stares at a green light across the water. It shows his hope to be with Daisy.</p>
                 </div>
-                <div className="border-l-4 border-emerald-300 pl-4">
-                  <h4 className="font-semibold">The Reunion</h4>
-                  <p className="text-gray-600 text-sm">When Gatsby and Daisy meet again for the first time in five years at Nick's house</p>
+                <div className="border-l-4 border-emerald-300 pl-4 group-hover:border-emerald-500 transition-colors">
+                  <h4 className="font-semibold cursor-help">Meeting Again 💕</h4>
+                  <p className="text-gray-600 text-sm">When Gatsby and Daisy see each other for the first time in 5 years. Very awkward!</p>
                 </div>
-                <div className="border-l-4 border-emerald-300 pl-4">
-                  <h4 className="font-semibold">The Plaza Hotel Argument</h4>
-                  <p className="text-gray-600 text-sm">The confrontation between Gatsby and Tom over Daisy that changes everything</p>
+                <div className="border-l-4 border-emerald-300 pl-4 group-hover:border-emerald-500 transition-colors">
+                  <h4 className="font-semibold cursor-help">The Big Fight 😡</h4>
+                  <p className="text-gray-600 text-sm">Tom and Gatsby argue about who Daisy loves. This changes everything!</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover-lift">
+          <Card className="hover-lift group">
             <CardHeader>
-              <CardTitle>Setting and Time</CardTitle>
+              <CardTitle>When and Where</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 leading-relaxed mb-4">
-                "The Great Gatsby" happens in New York City and Long Island during the summer of 1922. 
-                This was during the "Jazz Age" or "Roaring Twenties," when America was celebrating 
-                after World War I with wild parties, new music, and economic growth.
+                The story happens in summer 1922 in New York. This was the "Jazz Age" - 
+                a time of parties, new music, and lots of money after World War 1 ended.
               </p>
-              <div className="bg-emerald-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-emerald-800 mb-2">Important Places</h4>
+              <div className="bg-emerald-50 p-4 rounded-lg group-hover:bg-emerald-100 transition-colors">
+                <h4 className="font-semibold text-emerald-800 mb-2">Important Places 🏠</h4>
                 <p className="text-emerald-700 text-sm">
-                  East Egg (old money), West Egg (new money), and the Valley of Ashes (poverty) 
-                  show the different social classes in America and how they're separated.
+                  <span className="font-medium">East Egg:</span> Where old rich families live (like Tom and Daisy)<br/>
+                  <span className="font-medium">West Egg:</span> Where new rich people live (like Gatsby)<br/>
+                  <span className="font-medium">Valley of Ashes:</span> Where poor people live (very sad place)
                 </p>
               </div>
             </CardContent>
