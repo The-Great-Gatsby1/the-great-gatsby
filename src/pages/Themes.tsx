@@ -2,8 +2,33 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Heart, Shield, Star, Users, Compass, Award } from "lucide-react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 
 const Themes = () => {
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".theme-card", {
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out"
+      });
+
+      gsap.from(".theme-title", {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out"
+      });
+    }, pageRef);
+
+    return () => ctx.revert();
+  }, []);
+
   const themes = [
     {
       title: "The American Dream",
@@ -43,7 +68,7 @@ const Themes = () => {
       icon: Compass,
       description: "Gatsby believes he can repeat the past and recapture his relationship with Daisy, but learns that time changes everything and people can't go backwards.",
       examples: [
-        "\"Can't repeat the past? Why of course you can!\"",
+        "Can't repeat the past? Why of course you can!",
         "The old clock knocking over during Daisy and Gatsby's reunion",
         "Gatsby's inability to see Daisy as she really is now"
       ],
@@ -66,7 +91,7 @@ const Themes = () => {
       description: "The Jazz Age's focus on parties and money hides an emptiness underneath. The characters lack real purpose or moral guidance.",
       examples: [
         "The empty houses and meaningless parties",
-        "Tom and Daisy \"retreating into their money\"",
+        "Tom and Daisy retreating into their money",
         "The eyes of Dr. T.J. Eckleburg watching over the moral wasteland"
       ],
       color: "indigo"
@@ -75,25 +100,35 @@ const Themes = () => {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      emerald: "bg-emerald-100 text-emerald-600 border-emerald-300",
-      blue: "bg-blue-100 text-blue-600 border-blue-300",
-      red: "bg-red-100 text-red-600 border-red-300",
-      teal: "bg-teal-100 text-teal-600 border-teal-300",
-      purple: "bg-purple-100 text-purple-600 border-purple-300",
-      indigo: "bg-indigo-100 text-indigo-600 border-indigo-300"
+      emerald: "bg-emerald-500/20 text-emerald-400 border-emerald-400/30",
+      blue: "bg-blue-500/20 text-blue-400 border-blue-400/30",
+      red: "bg-red-500/20 text-red-400 border-red-400/30",
+      teal: "bg-teal-500/20 text-teal-400 border-teal-400/30",
+      purple: "bg-purple-500/20 text-purple-400 border-purple-400/30",
+      indigo: "bg-indigo-500/20 text-indigo-400 border-indigo-400/30"
     };
     return colors[color as keyof typeof colors] || colors.emerald;
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
+    <div ref={pageRef} className="min-h-screen bg-black">
       <Navigation />
+      
+      {/* Art Deco Background Lines */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4 font-[Playfair_Display]">
+          <h1 className="theme-title text-4xl md:text-6xl font-bold text-yellow-400 mb-4 font-[Playfair_Display] art-deco-title">
             Big Ideas in the Story
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Explore the deeper meanings and important themes in "The Great Gatsby"
           </p>
         </div>
@@ -102,10 +137,10 @@ const Themes = () => {
           {themes.map((theme, index) => {
             const IconComponent = theme.icon;
             return (
-              <Card key={theme.title} className="hover-lift fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={theme.title} className="theme-card hover-lift fade-in art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm group" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${getColorClasses(theme.color)}`}>
+                  <CardTitle className="flex items-center gap-3 text-yellow-400 font-[Playfair_Display]">
+                    <div className={`p-2 rounded-lg ${getColorClasses(theme.color)} border group-hover:scale-110 transition-transform`}>
                       <IconComponent size={24} />
                     </div>
                     <div>
@@ -114,15 +149,15 @@ const Themes = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-300 leading-relaxed mb-4">
                     {theme.description}
                   </p>
-                  <div>
-                    <h4 className="font-semibold mb-2 text-gray-800">Examples:</h4>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h4 className="font-semibold mb-2 text-yellow-300">Examples:</h4>
                     <ul className="space-y-1">
                       {theme.examples.map((example, idx) => (
-                        <li key={idx} className="text-gray-600 text-sm flex items-start gap-2">
-                          <span className={`w-2 h-2 rounded-full mt-2 ${getColorClasses(theme.color).replace('text-', 'bg-').replace('border-', '').replace('bg-', 'bg-').split(' ')[0]}`}></span>
+                        <li key={idx} className="text-gray-300 text-sm flex items-start gap-2">
+                          <span className={`w-2 h-2 rounded-full mt-2 ${getColorClasses(theme.color).split(' ')[0].replace('bg-', 'bg-').replace('/20', '/60')}`}></span>
                           {example}
                         </li>
                       ))}
@@ -134,30 +169,30 @@ const Themes = () => {
           })}
         </div>
 
-        <Card className="hover-lift">
+        <Card className="hover-lift art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="text-center">Why These Ideas Matter</CardTitle>
+            <CardTitle className="text-center text-yellow-400 font-[Playfair_Display]">Why These Ideas Matter</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold mb-3 text-gray-800">Still Relevant Today</h4>
-                <p className="text-gray-700 leading-relaxed text-sm">
+                <h4 className="font-semibold mb-3 text-yellow-300">Still Relevant Today</h4>
+                <p className="text-gray-300 leading-relaxed text-sm">
                   These themes connect with readers today because we still care about the American Dream, 
                   social differences, and the emptiness that can come with focusing too much on money and status.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-3 text-gray-800">Why It's a Classic</h4>
-                <p className="text-gray-700 leading-relaxed text-sm">
+                <h4 className="font-semibold mb-3 text-yellow-300">Why It's a Classic</h4>
+                <p className="text-gray-300 leading-relaxed text-sm">
                   Fitzgerald weaves these themes together with beautiful writing and unforgettable symbols 
                   like the green light, the eyes of Dr. T.J. Eckleburg, and the Valley of Ashes.
                 </p>
               </div>
             </div>
-            <div className="mt-6 bg-emerald-50 p-6 rounded-lg">
-              <h4 className="font-semibold text-emerald-800 mb-2 text-center">Main Message</h4>
-              <p className="text-emerald-700 text-center">
+            <div className="mt-6 bg-yellow-500/10 p-6 rounded-lg border border-yellow-500/20">
+              <h4 className="font-semibold text-yellow-300 mb-2 text-center">Main Message</h4>
+              <p className="text-gray-300 text-center">
                 "The Great Gatsby" shows how the American Dream can fail, and how chasing money and status 
                 alone leaves people empty. It warns us about building our dreams on illusions rather than reality.
               </p>

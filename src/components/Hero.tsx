@@ -1,210 +1,169 @@
 
-import { Button } from "@/components/ui/button";
-import { BookOpen, Users, Lightbulb, FileText, Sparkles, GamepadIcon } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { BookOpen, Users, Map, Palette, BarChart3, Trophy } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
-  const bookRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero entrance animation
-      gsap.from(titleRef.current, {
+      // Hero title animation
+      gsap.from(".hero-title", {
         y: 100,
         opacity: 0,
         duration: 1.2,
         ease: "power3.out"
       });
 
-      // Stagger cards animation
-      gsap.from(".nav-card", {
+      // Hero subtitle animation
+      gsap.from(".hero-subtitle", {
         y: 50,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        delay: 0.5,
+        duration: 1,
+        delay: 0.3,
         ease: "power2.out"
       });
 
-      // Book floating animation
-      gsap.to(bookRef.current, {
-        y: -20,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: "power2.inOut"
+      // Cards staggered animation
+      gsap.from(".hero-card", {
+        y: 80,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        delay: 0.6,
+        ease: "power2.out"
       });
 
-      // Background elements animation
-      gsap.to(".bg-element", {
-        rotation: 360,
-        duration: 20,
+      // Floating animation for decorative elements
+      gsap.to(".float-element", {
+        y: -10,
+        duration: 2,
         repeat: -1,
-        ease: "none"
+        yoyo: true,
+        ease: "power1.inOut",
+        stagger: 0.5
       });
     }, heroRef);
 
     return () => ctx.revert();
   }, []);
 
-  const handleCardHover = (element: EventTarget | null) => {
-    if (element) {
-      gsap.to(element, {
-        scale: 1.05,
-        rotationY: 5,
-        duration: 0.3,
-        ease: "power2.out"
-      });
+  const sections = [
+    {
+      title: "Author",
+      icon: Users,
+      description: "Learn about F. Scott Fitzgerald and why he wrote this famous story",
+      path: "/author",
+      color: "emerald"
+    },
+    {
+      title: "Characters",
+      icon: Users,
+      description: "Meet Gatsby, Daisy, Nick, and the other important people in the story",
+      path: "/characters",
+      color: "blue"
+    },
+    {
+      title: "Plot",
+      icon: Map,
+      description: "Follow the exciting events of the summer of 1922",
+      path: "/plot",
+      color: "teal"
+    },
+    {
+      title: "Themes",
+      icon: Palette,
+      description: "Discover the big ideas about dreams, love, and money",
+      path: "/themes",
+      color: "purple"
+    },
+    {
+      title: "Analysis",
+      icon: BarChart3,
+      description: "Understand the deeper meanings and why this book is important",
+      path: "/analysis",
+      color: "indigo"
+    },
+    {
+      title: "Quiz",
+      icon: Trophy,
+      description: "Test what you learned with a fun quiz game",
+      path: "/game",
+      color: "red"
     }
-  };
-
-  const handleCardLeave = (element: EventTarget | null) => {
-    if (element) {
-      gsap.to(element, {
-        scale: 1,
-        rotationY: 0,
-        duration: 0.3,
-        ease: "power2.out"
-      });
-    }
-  };
+  ];
 
   return (
-    <div ref={heroRef} className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 relative overflow-hidden">
-      {/* Enhanced animated background elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="bg-element absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-emerald-300 to-teal-300 rounded-full"></div>
-        <div className="bg-element absolute top-40 right-20 w-16 h-16 bg-gradient-to-r from-teal-300 to-cyan-300 rounded-full"></div>
-        <div className="bg-element absolute bottom-20 left-1/4 w-12 h-12 bg-gradient-to-r from-cyan-300 to-emerald-300 rounded-full"></div>
-        <div className="bg-element absolute top-1/2 right-1/4 w-8 h-8 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full"></div>
+    <div ref={heroRef} className="min-h-screen bg-black relative overflow-hidden">
+      {/* Art Deco Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent float-element"></div>
+        <div className="absolute top-40 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent float-element"></div>
+        <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent float-element"></div>
+        <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent float-element"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-20 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="text-center lg:text-left">
-            <div className="flex items-center gap-2 justify-center lg:justify-start mb-4">
-              <Sparkles className="text-emerald-600 animate-pulse" size={24} />
-              <span className="text-emerald-600 font-semibold">Famous American Book</span>
-            </div>
-            <h1 ref={titleRef} className="text-5xl md:text-6xl lg:text-7xl font-bold text-gradient mb-6 font-[Playfair_Display]">
-              The Great Gatsby
-            </h1>
-            <p className="text-2xl md:text-3xl text-gray-600 mb-4 font-[Playfair_Display] italic">
-              by F. Scott Fitzgerald
-            </p>
-            <div className="group relative inline-block mb-8">
-              <p className="text-xl text-gray-700 max-w-2xl lg:max-w-none leading-relaxed cursor-help">
-                Learn about the American Dream, love, and the 1920s in this famous story 
-                about Jay Gatsby who wants to <span className="underline decoration-emerald-300 decoration-wavy">win back Daisy</span> in New York.
-              </p>
-              <div className="absolute bottom-full left-0 mb-2 hidden group-hover:block bg-white p-3 rounded-lg shadow-lg border max-w-xs">
-                <p className="text-sm text-gray-600">
-                  The story shows how people chase dreams of money and love, but sometimes these dreams can hurt them.
-                </p>
-              </div>
-            </div>
-            <Link to="/analysis">
-              <Button size="lg" className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-4 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                Start Learning
-                <BookOpen className="ml-2" size={20} />
-              </Button>
-            </Link>
-          </div>
-
-          <div className="flex justify-center">
-            <div ref={bookRef} className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-2xl blur-xl opacity-40 animate-pulse"></div>
-              <img 
-                src="/lovable-uploads/ec2bfb7d-581b-4ebf-87b0-8bca40369d35.png" 
-                alt="The Great Gatsby Book Cover" 
-                className="relative w-80 h-auto rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-300 cursor-pointer"
-                onClick={() => {
-                  gsap.to(bookRef.current, {
-                    rotation: 360,
-                    duration: 1,
-                    ease: "power2.inOut"
-                  });
-                }}
-              />
-            </div>
-          </div>
+      <div className="max-w-6xl mx-auto px-4 py-20">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <h1 className="hero-title text-6xl md:text-8xl font-bold text-yellow-400 mb-6 font-[Playfair_Display] art-deco-title">
+            THE GREAT GATSBY
+          </h1>
+          <div className="w-40 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-8 float-element"></div>
+          <p className="hero-subtitle text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Explore F. Scott Fitzgerald's masterpiece about dreams, love, and the American Dream in the Jazz Age
+          </p>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-16">
-          <Link to="/author" className="group nav-card">
-            <div 
-              className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center border border-white/20 transition-all duration-300 hover:bg-white"
-              onMouseEnter={(e) => handleCardHover(e.currentTarget)}
-              onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
-            >
-              <div className="bg-gradient-to-br from-emerald-100 to-emerald-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:from-emerald-200 group-hover:to-emerald-300 transition-all">
-                <FileText className="text-emerald-600" size={24} />
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-800">The Writer</h3>
-              <p className="text-gray-600 text-sm">Learn about F. Scott Fitzgerald</p>
-            </div>
-          </Link>
+        {/* Navigation Cards */}
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sections.map((section, index) => {
+            const IconComponent = section.icon;
+            return (
+              <Link key={section.path} to={section.path}>
+                <Card className="hero-card art-deco-card hover-lift bg-black/80 border-yellow-500/30 backdrop-blur-sm group cursor-pointer h-full">
+                  <CardHeader className="text-center pb-4">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent size={28} className="text-black" />
+                    </div>
+                    <CardTitle className="text-xl font-bold text-yellow-400 font-[Playfair_Display] group-hover:text-yellow-300 transition-colors">
+                      {section.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                      {section.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            );
+          })}
+        </div>
 
-          <Link to="/characters" className="group nav-card">
-            <div 
-              className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center border border-white/20 transition-all duration-300 hover:bg-white"
-              onMouseEnter={(e) => handleCardHover(e.currentTarget)}
-              onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
-            >
-              <div className="bg-gradient-to-br from-teal-100 to-teal-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:from-teal-200 group-hover:to-teal-300 transition-all">
-                <Users className="text-teal-600" size={24} />
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-800">People</h3>
-              <p className="text-gray-600 text-sm">Meet Gatsby, Daisy, and Nick</p>
+        {/* Quick Facts Section */}
+        <div className="mt-20 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="hero-card bg-black/60 border border-yellow-500/20 rounded-lg p-6 backdrop-blur-sm">
+              <BookOpen className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-yellow-400 mb-2">Published 1925</h3>
+              <p className="text-gray-300 text-sm">Written during the Jazz Age</p>
             </div>
-          </Link>
-
-          <Link to="/plot" className="group nav-card">
-            <div 
-              className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center border border-white/20 transition-all duration-300 hover:bg-white"
-              onMouseEnter={(e) => handleCardHover(e.currentTarget)}
-              onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
-            >
-              <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:from-blue-200 group-hover:to-blue-300 transition-all">
-                <BookOpen className="text-blue-600" size={24} />
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-800">Story</h3>
-              <p className="text-gray-600 text-sm">What happens in the book</p>
+            <div className="hero-card bg-black/60 border border-yellow-500/20 rounded-lg p-6 backdrop-blur-sm">
+              <Map className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-yellow-400 mb-2">Set in 1922</h3>
+              <p className="text-gray-300 text-sm">Long Island, New York</p>
             </div>
-          </Link>
-
-          <Link to="/themes" className="group nav-card">
-            <div 
-              className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center border border-white/20 transition-all duration-300 hover:bg-white"
-              onMouseEnter={(e) => handleCardHover(e.currentTarget)}
-              onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
-            >
-              <div className="bg-gradient-to-br from-purple-100 to-purple-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:from-purple-200 group-hover:to-purple-300 transition-all">
-                <Lightbulb className="text-purple-600" size={24} />
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-800">Big Ideas</h3>
-              <p className="text-gray-600 text-sm">What the book teaches us</p>
+            <div className="hero-card bg-black/60 border border-yellow-500/20 rounded-lg p-6 backdrop-blur-sm">
+              <Palette className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-yellow-400 mb-2">American Classic</h3>
+              <p className="text-gray-300 text-sm">One of the greatest novels ever written</p>
             </div>
-          </Link>
-
-          <Link to="/game" className="group nav-card">
-            <div 
-              className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 text-center border border-white/20 transition-all duration-300 hover:bg-white"
-              onMouseEnter={(e) => handleCardHover(e.currentTarget)}
-              onMouseLeave={(e) => handleCardLeave(e.currentTarget)}
-            >
-              <div className="bg-gradient-to-br from-pink-100 to-pink-200 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:from-pink-200 group-hover:to-pink-300 transition-all">
-                <GamepadIcon className="text-pink-600" size={24} />
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-gray-800">Fun Quiz</h3>
-              <p className="text-gray-600 text-sm">Test what you learned!</p>
-            </div>
-          </Link>
+          </div>
         </div>
       </div>
     </div>

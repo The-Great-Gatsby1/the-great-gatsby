@@ -44,12 +44,16 @@ const Game = () => {
   ];
 
   useEffect(() => {
-    gsap.from(cardRef.current, {
-      scale: 0.8,
-      opacity: 0,
-      duration: 0.6,
-      ease: "power2.out"
-    });
+    const ctx = gsap.context(() => {
+      gsap.from(cardRef.current, {
+        scale: 0.8,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      });
+    }, cardRef);
+
+    return () => ctx.revert();
   }, [currentQuestion]);
 
   const handleAnswer = (answerIndex: number) => {
@@ -59,8 +63,8 @@ const Game = () => {
     if (answerIndex === questions[currentQuestion].correct) {
       setScore(score + 1);
       gsap.to(".correct-answer", {
-        backgroundColor: "#10B981",
-        color: "white",
+        backgroundColor: "#EAB308",
+        color: "#000",
         duration: 0.3
       });
     } else {
@@ -70,8 +74,8 @@ const Game = () => {
         duration: 0.3
       });
       gsap.to(".correct-answer", {
-        backgroundColor: "#10B981",
-        color: "white",
+        backgroundColor: "#EAB308",
+        color: "#000",
         duration: 0.3
       });
     }
@@ -111,13 +115,22 @@ const Game = () => {
 
   if (gameFinished) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
+      <div className="min-h-screen bg-black">
         <Navigation />
+        
+        {/* Art Deco Background Lines */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+          <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+          <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+          <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+        </div>
+
         <div className="max-w-4xl mx-auto px-4 py-12">
-          <Card ref={resultRef} className="text-center">
+          <Card ref={resultRef} className="text-center art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle className="flex items-center justify-center gap-2 text-3xl">
-                <Trophy className="text-yellow-500" size={32} />
+              <CardTitle className="flex items-center justify-center gap-2 text-3xl text-yellow-400 font-[Playfair_Display]">
+                <Trophy className="text-yellow-400" size={32} />
                 Quiz Complete!
               </CardTitle>
             </CardHeader>
@@ -125,11 +138,11 @@ const Game = () => {
               <div className="text-6xl font-bold text-gradient mb-4">
                 {score}/{questions.length}
               </div>
-              <p className="text-xl text-gray-700 mb-6">
+              <p className="text-xl text-gray-300 mb-6">
                 {getScoreMessage()}
               </p>
               <div className="flex justify-center gap-4">
-                <Button onClick={resetGame} className="bg-emerald-600 hover:bg-emerald-700">
+                <Button onClick={resetGame} className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
                   <RotateCcw className="mr-2" size={16} />
                   Try Again
                 </Button>
@@ -142,34 +155,44 @@ const Game = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
+    <div className="min-h-screen bg-black">
       <Navigation />
+      
+      {/* Art Deco Background Lines */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+      </div>
+
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4 font-[Playfair_Display]">
+          <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 mb-4 font-[Playfair_Display] art-deco-title">
             Gatsby Quiz Game
           </h1>
-          <p className="text-xl text-gray-600">
+          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
+          <p className="text-xl text-gray-300">
             Test what you learned about the story!
           </p>
           <div className="flex justify-center items-center gap-4 mt-4">
-            <span className="text-lg">Question {currentQuestion + 1} of {questions.length}</span>
+            <span className="text-lg text-gray-300">Question {currentQuestion + 1} of {questions.length}</span>
             <div className="flex gap-1">
               {Array.from({ length: questions.length }).map((_, i) => (
                 <Star
                   key={i}
                   size={16}
-                  className={i <= currentQuestion ? "text-yellow-400 fill-current" : "text-gray-300"}
+                  className={i <= currentQuestion ? "text-yellow-400 fill-current" : "text-gray-600"}
                 />
               ))}
             </div>
-            <span className="text-lg">Score: {score}</span>
+            <span className="text-lg text-gray-300">Score: {score}</span>
           </div>
         </div>
 
-        <Card ref={cardRef} className="hover-lift">
+        <Card ref={cardRef} className="hover-lift art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="text-xl">
+            <CardTitle className="text-xl text-yellow-400 font-[Playfair_Display]">
               {questions[currentQuestion].question}
             </CardTitle>
           </CardHeader>
@@ -179,7 +202,7 @@ const Game = () => {
                 <Button
                   key={index}
                   variant="outline"
-                  className={`w-full p-4 text-left justify-start h-auto ${
+                  className={`w-full p-4 text-left justify-start h-auto bg-black/40 border-yellow-500/30 text-gray-300 hover:bg-yellow-500/20 hover:border-yellow-400 ${
                     showResult && selectedAnswer === index
                       ? index === questions[currentQuestion].correct
                         ? "correct-answer"
@@ -196,10 +219,10 @@ const Game = () => {
                   </span>
                   {answer}
                   {showResult && index === questions[currentQuestion].correct && (
-                    <CheckCircle className="ml-auto text-white" size={20} />
+                    <CheckCircle className="ml-auto" size={20} />
                   )}
                   {showResult && selectedAnswer === index && index !== questions[currentQuestion].correct && (
-                    <XCircle className="ml-auto text-white" size={20} />
+                    <XCircle className="ml-auto" size={20} />
                   )}
                 </Button>
               ))}
@@ -207,7 +230,7 @@ const Game = () => {
             
             {showResult && (
               <div className="mt-6 text-center">
-                <Button onClick={nextQuestion} className="bg-emerald-600 hover:bg-emerald-700">
+                <Button onClick={nextQuestion} className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold">
                   {currentQuestion < questions.length - 1 ? "Next Question" : "See Results"}
                 </Button>
               </div>

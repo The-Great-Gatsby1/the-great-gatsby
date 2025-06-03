@@ -9,13 +9,24 @@ const Plot = () => {
   const pageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    gsap.from(".plot-card", {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.2,
-      ease: "power2.out"
-    });
+    const ctx = gsap.context(() => {
+      gsap.from(".plot-card", {
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out"
+      });
+
+      gsap.from(".plot-title", {
+        y: 40,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out"
+      });
+    }, pageRef);
+
+    return () => ctx.revert();
   }, []);
 
   const plotPoints = [
@@ -51,23 +62,33 @@ const Plot = () => {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      blue: "bg-blue-100 text-blue-600 border-blue-300",
-      teal: "bg-teal-100 text-teal-600 border-teal-300",
-      red: "bg-red-100 text-red-600 border-red-300",
-      green: "bg-green-100 text-green-600 border-green-300"
+      blue: "bg-blue-500/20 text-blue-400 border-blue-400/30",
+      teal: "bg-teal-500/20 text-teal-400 border-teal-400/30",
+      red: "bg-red-500/20 text-red-400 border-red-400/30",
+      green: "bg-green-500/20 text-green-400 border-green-400/30"
     };
     return colors[color as keyof typeof colors] || colors.teal;
   };
 
   return (
-    <div ref={pageRef} className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
+    <div ref={pageRef} className="min-h-screen bg-black">
       <Navigation />
+      
+      {/* Art Deco Background Lines */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="text-center mb-12 fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold text-gradient mb-4 font-[Playfair_Display]">
+          <h1 className="plot-title text-4xl md:text-6xl font-bold text-yellow-400 mb-4 font-[Playfair_Display] art-deco-title">
             What Happens in the Story
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Follow along with the summer of 1922 on Long Island
           </p>
         </div>
@@ -76,22 +97,22 @@ const Plot = () => {
           {plotPoints.map((point, index) => {
             const IconComponent = point.icon;
             return (
-              <Card key={point.title} className="plot-card hover-lift group cursor-pointer">
+              <Card key={point.title} className="plot-card hover-lift group cursor-pointer art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${getColorClasses(point.color)} group-hover:scale-110 transition-transform`}>
+                  <CardTitle className="flex items-center gap-3 text-yellow-400 font-[Playfair_Display]">
+                    <div className={`p-2 rounded-lg ${getColorClasses(point.color)} group-hover:scale-110 transition-transform border`}>
                       <IconComponent size={24} />
                     </div>
                     {point.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 leading-relaxed mb-4">
+                  <p className="text-gray-300 leading-relaxed mb-4">
                     {point.content}
                   </p>
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-emerald-50 p-3 rounded-lg border-l-4 border-emerald-300">
-                    <p className="text-emerald-700 text-sm font-medium">
-                      💡 {point.detail}
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-yellow-500/10 p-3 rounded-lg border-l-4 border-yellow-400">
+                    <p className="text-yellow-300 text-sm font-medium">
+                      Learn More: {point.detail}
                     </p>
                   </div>
                 </CardContent>
@@ -101,43 +122,43 @@ const Plot = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Card className="hover-lift group">
+          <Card className="hover-lift group art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>Cool Scenes to Remember</CardTitle>
+              <CardTitle className="text-yellow-400 font-[Playfair_Display]">Cool Scenes to Remember</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div className="border-l-4 border-emerald-300 pl-4 group-hover:border-emerald-500 transition-colors">
-                  <h4 className="font-semibold cursor-help">The Green Light ✨</h4>
-                  <p className="text-gray-600 text-sm">Gatsby stares at a green light across the water. It shows his hope to be with Daisy.</p>
+                <div className="border-l-4 border-yellow-400 pl-4 group-hover:border-yellow-300 transition-colors">
+                  <h4 className="font-semibold cursor-help text-yellow-300">The Green Light</h4>
+                  <p className="text-gray-300 text-sm">Gatsby stares at a green light across the water. It shows his hope to be with Daisy.</p>
                 </div>
-                <div className="border-l-4 border-emerald-300 pl-4 group-hover:border-emerald-500 transition-colors">
-                  <h4 className="font-semibold cursor-help">Meeting Again 💕</h4>
-                  <p className="text-gray-600 text-sm">When Gatsby and Daisy see each other for the first time in 5 years. Very awkward!</p>
+                <div className="border-l-4 border-yellow-400 pl-4 group-hover:border-yellow-300 transition-colors">
+                  <h4 className="font-semibold cursor-help text-yellow-300">Meeting Again</h4>
+                  <p className="text-gray-300 text-sm">When Gatsby and Daisy see each other for the first time in 5 years. Very awkward!</p>
                 </div>
-                <div className="border-l-4 border-emerald-300 pl-4 group-hover:border-emerald-500 transition-colors">
-                  <h4 className="font-semibold cursor-help">The Big Fight 😡</h4>
-                  <p className="text-gray-600 text-sm">Tom and Gatsby argue about who Daisy loves. This changes everything!</p>
+                <div className="border-l-4 border-yellow-400 pl-4 group-hover:border-yellow-300 transition-colors">
+                  <h4 className="font-semibold cursor-help text-yellow-300">The Big Fight</h4>
+                  <p className="text-gray-300 text-sm">Tom and Gatsby argue about who Daisy loves. This changes everything!</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="hover-lift group">
+          <Card className="hover-lift group art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
             <CardHeader>
-              <CardTitle>When and Where</CardTitle>
+              <CardTitle className="text-yellow-400 font-[Playfair_Display]">When and Where</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-gray-700 leading-relaxed mb-4">
+              <p className="text-gray-300 leading-relaxed mb-4">
                 The story happens in summer 1922 in New York. This was the "Jazz Age" - 
                 a time of parties, new music, and lots of money after World War 1 ended.
               </p>
-              <div className="bg-emerald-50 p-4 rounded-lg group-hover:bg-emerald-100 transition-colors">
-                <h4 className="font-semibold text-emerald-800 mb-2">Important Places 🏠</h4>
-                <p className="text-emerald-700 text-sm">
-                  <span className="font-medium">East Egg:</span> Where old rich families live (like Tom and Daisy)<br/>
-                  <span className="font-medium">West Egg:</span> Where new rich people live (like Gatsby)<br/>
-                  <span className="font-medium">Valley of Ashes:</span> Where poor people live (very sad place)
+              <div className="bg-yellow-500/10 p-4 rounded-lg group-hover:bg-yellow-500/20 transition-colors border border-yellow-500/20">
+                <h4 className="font-semibold text-yellow-300 mb-2">Important Places</h4>
+                <p className="text-gray-300 text-sm">
+                  <span className="font-medium text-yellow-400">East Egg:</span> Where old rich families live (like Tom and Daisy)<br/>
+                  <span className="font-medium text-yellow-400">West Egg:</span> Where new rich people live (like Gatsby)<br/>
+                  <span className="font-medium text-yellow-400">Valley of Ashes:</span> Where poor people live (very sad place)
                 </p>
               </div>
             </CardContent>
