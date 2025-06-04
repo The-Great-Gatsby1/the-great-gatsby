@@ -100,12 +100,12 @@ const Themes = () => {
 
   const getColorClasses = (color: string) => {
     const colors = {
-      emerald: "bg-emerald-500/20 text-emerald-400 border-emerald-400/30",
-      blue: "bg-blue-500/20 text-blue-400 border-blue-400/30",
-      red: "bg-red-500/20 text-red-400 border-red-400/30",
-      teal: "bg-teal-500/20 text-teal-400 border-teal-400/30",
-      purple: "bg-purple-500/20 text-purple-400 border-purple-400/30",
-      indigo: "bg-indigo-500/20 text-indigo-400 border-indigo-400/30"
+      emerald: "bg-emerald-500/30 text-emerald-300 border-emerald-400/50",
+      blue: "bg-blue-500/30 text-blue-300 border-blue-400/50",
+      red: "bg-red-500/30 text-red-300 border-red-400/50",
+      teal: "bg-teal-500/30 text-teal-300 border-teal-400/50",
+      purple: "bg-purple-500/30 text-purple-300 border-purple-400/50",
+      indigo: "bg-indigo-500/30 text-indigo-300 border-indigo-400/50"
     };
     return colors[color as keyof typeof colors] || colors.emerald;
   };
@@ -128,7 +128,7 @@ const Themes = () => {
             Big Ideas in the Story
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
             Explore the deeper meanings and important themes in "The Great Gatsby"
           </p>
         </div>
@@ -137,7 +137,7 @@ const Themes = () => {
           {themes.map((theme, index) => {
             const IconComponent = theme.icon;
             return (
-              <Card key={theme.title} className="theme-card hover-lift fade-in art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm group" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={theme.title} className="theme-card hover-lift fade-in art-deco-card bg-gray-900/95 border-yellow-500/40 backdrop-blur-sm group" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 text-yellow-400 font-[Playfair_Display]">
                     <div className={`p-2 rounded-lg ${getColorClasses(theme.color)} border group-hover:scale-110 transition-transform`}>
@@ -149,15 +149,15 @@ const Themes = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 leading-relaxed mb-4">
+                  <p className="text-gray-200 leading-relaxed mb-4">
                     {theme.description}
                   </p>
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <h4 className="font-semibold mb-2 text-yellow-300">Examples:</h4>
                     <ul className="space-y-1">
                       {theme.examples.map((example, idx) => (
-                        <li key={idx} className="text-gray-300 text-sm flex items-start gap-2">
-                          <span className={`w-2 h-2 rounded-full mt-2 ${getColorClasses(theme.color).split(' ')[0].replace('bg-', 'bg-').replace('/20', '/60')}`}></span>
+                        <li key={idx} className="text-gray-200 text-sm flex items-start gap-2">
+                          <span className={`w-2 h-2 rounded-full mt-2 ${getColorClasses(theme.color).split(' ')[0].replace('bg-', 'bg-').replace('/30', '/70')}`}></span>
                           {example}
                         </li>
                       ))}
@@ -169,7 +169,7 @@ const Themes = () => {
           })}
         </div>
 
-        <Card className="hover-lift art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
+        <Card className="hover-lift art-deco-card bg-gray-900/95 border-yellow-500/40 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-center text-yellow-400 font-[Playfair_Display]">Why These Ideas Matter</CardTitle>
           </CardHeader>
@@ -177,22 +177,22 @@ const Themes = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-semibold mb-3 text-yellow-300">Still Relevant Today</h4>
-                <p className="text-gray-300 leading-relaxed text-sm">
+                <p className="text-gray-200 leading-relaxed text-sm">
                   These themes connect with readers today because we still care about the American Dream, 
                   social differences, and the emptiness that can come with focusing too much on money and status.
                 </p>
               </div>
               <div>
                 <h4 className="font-semibold mb-3 text-yellow-300">Why It's a Classic</h4>
-                <p className="text-gray-300 leading-relaxed text-sm">
+                <p className="text-gray-200 leading-relaxed text-sm">
                   Fitzgerald weaves these themes together with beautiful writing and unforgettable symbols 
                   like the green light, the eyes of Dr. T.J. Eckleburg, and the Valley of Ashes.
                 </p>
               </div>
             </div>
-            <div className="mt-6 bg-yellow-500/10 p-6 rounded-lg border border-yellow-500/20">
+            <div className="mt-6 bg-yellow-500/15 p-6 rounded-lg border border-yellow-500/30">
               <h4 className="font-semibold text-yellow-300 mb-2 text-center">Main Message</h4>
-              <p className="text-gray-300 text-center">
+              <p className="text-gray-200 text-center">
                 "The Great Gatsby" shows how the American Dream can fail, and how chasing money and status 
                 alone leaves people empty. It warns us about building our dreams on illusions rather than reality.
               </p>

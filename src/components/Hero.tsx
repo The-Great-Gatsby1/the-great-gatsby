@@ -11,10 +11,16 @@ const Hero = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero title animation - improved to avoid visibility issues
+      // Hero title animation
       gsap.fromTo(".hero-title", 
         { y: 100, opacity: 0 },
         { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
+      );
+
+      // Book cover animation
+      gsap.fromTo(".book-cover", 
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1, delay: 0.5, ease: "power2.out" }
       );
 
       // Hero subtitle animation
@@ -23,10 +29,10 @@ const Hero = () => {
         { y: 0, opacity: 1, duration: 1, delay: 0.3, ease: "power2.out" }
       );
 
-      // Cards staggered animation - ensure opacity reaches 1
+      // Cards staggered animation
       gsap.fromTo(".hero-card", 
         { y: 80, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, delay: 0.6, ease: "power2.out" }
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, delay: 0.8, ease: "power2.out" }
       );
 
       // Floating animation for decorative elements
@@ -104,6 +110,16 @@ const Hero = () => {
           <h1 className="hero-title text-6xl md:text-8xl font-bold text-yellow-400 mb-6 font-[Playfair_Display] art-deco-title">
             THE GREAT GATSBY
           </h1>
+          
+          {/* Book Cover */}
+          <div className="book-cover mb-8 flex justify-center">
+            <img 
+              src="/lovable-uploads/5b10fb0c-de62-4450-8bcf-62aa8dffd7c9.png" 
+              alt="The Great Gatsby Book Cover by F. Scott Fitzgerald" 
+              className="w-64 h-auto max-w-sm mx-auto rounded-lg shadow-2xl border-2 border-yellow-400/30 hover:border-yellow-400/60 transition-all duration-300 hover:scale-105"
+            />
+          </div>
+          
           <div className="w-40 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-8 float-element"></div>
           <p className="hero-subtitle text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             Explore F. Scott Fitzgerald's masterpiece about dreams, love, and the American Dream in the Jazz Age
