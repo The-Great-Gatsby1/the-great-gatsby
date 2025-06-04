@@ -61,28 +61,25 @@ const Characters = () => {
     }
   ];
 
-  const getColorClasses = (color: string) => {
-    switch (color) {
-      case "emerald": return "from-emerald-100 to-emerald-200 text-emerald-600 border-emerald-200";
-      case "pink": return "from-pink-100 to-pink-200 text-pink-600 border-pink-200";
-      case "blue": return "from-blue-100 to-blue-200 text-blue-600 border-blue-200";
-      case "red": return "from-red-100 to-red-200 text-red-600 border-red-200";
-      case "purple": return "from-purple-100 to-purple-200 text-purple-600 border-purple-200";
-      case "orange": return "from-orange-100 to-orange-200 text-orange-600 border-orange-200";
-      default: return "from-gray-100 to-gray-200 text-gray-600 border-gray-200";
-    }
-  };
-
   return (
     <div className="min-h-screen bg-black">
       <Navigation />
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      
+      {/* Art Deco Background Lines */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
+        <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
+      </div>
+      
+      <div className="max-w-6xl mx-auto px-4 py-12 relative z-10">
         <div className="text-center mb-12 fade-in">
           <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 mb-4 font-[Playfair_Display] art-deco-title">
             CHARACTERS
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
             Meet the people in "The Great Gatsby" and learn what makes them important
           </p>
         </div>
@@ -93,27 +90,27 @@ const Characters = () => {
             return (
               <Card 
                 key={character.name} 
-                className={`art-deco-card hover-lift bg-black/80 border-yellow-500/30 backdrop-blur-sm ${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}`}
+                className={`improved-art-deco-card hover-lift bg-gray-900/90 border-yellow-500/50 backdrop-blur-sm ${index % 2 === 0 ? 'slide-in-left' : 'slide-in-right'}`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <CardHeader className="text-center">
-                  <div className="relative w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-yellow-500/50">
+                  <div className="relative w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full border-4 border-yellow-500/70">
                     <img 
                       src={character.image} 
                       alt={character.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover brightness-100"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                   </div>
                   <CardTitle className="text-xl font-bold text-yellow-400 font-[Playfair_Display]">
                     {character.name}
                   </CardTitle>
-                  <p className="text-sm font-medium text-yellow-300/80 uppercase tracking-wide">
+                  <p className="text-sm font-medium text-yellow-300/90 uppercase tracking-wide">
                     {character.role}
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 leading-relaxed mb-4">
+                  <p className="text-gray-200 leading-relaxed mb-4">
                     {character.description}
                   </p>
                   <div className="space-y-2">
@@ -122,7 +119,7 @@ const Characters = () => {
                       {character.traits.map((trait) => (
                         <span 
                           key={trait}
-                          className="bg-yellow-500/20 border border-yellow-500/30 text-yellow-300 px-3 py-1 rounded-full text-xs font-medium"
+                          className="bg-yellow-500/30 border border-yellow-500/50 text-yellow-200 px-3 py-1 rounded-full text-xs font-medium"
                         >
                           {trait}
                         </span>
@@ -135,7 +132,7 @@ const Characters = () => {
           })}
         </div>
 
-        <Card className="mt-12 hover-lift art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
+        <Card className="mt-12 hover-lift improved-art-deco-card bg-gray-900/90 border-yellow-500/50 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-center justify-center text-yellow-400 font-[Playfair_Display]">
               <Users2 className="text-yellow-400" />
@@ -149,15 +146,15 @@ const Characters = () => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
-                    <span className="text-gray-300">Gatsby loves Daisy</span>
+                    <span className="text-gray-200">Gatsby loves Daisy</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
-                    <span className="text-gray-300">Daisy is married to Tom</span>
+                    <span className="text-gray-200">Daisy is married to Tom</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                    <span className="text-gray-300">Tom has an affair with Myrtle</span>
+                    <span className="text-gray-200">Tom has an affair with Myrtle</span>
                   </div>
                 </div>
               </div>
@@ -166,15 +163,15 @@ const Characters = () => {
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-300">Nick is Gatsby's neighbor and friend</span>
+                    <span className="text-gray-200">Nick is Gatsby's neighbor and friend</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                    <span className="text-gray-300">Jordan is Daisy's best friend</span>
+                    <span className="text-gray-200">Jordan is Daisy's best friend</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-300">Nick and Jordan date briefly</span>
+                    <span className="text-gray-200">Nick and Jordan date briefly</span>
                   </div>
                 </div>
               </div>

@@ -45,12 +45,10 @@ const Game = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(cardRef.current, {
-        scale: 0.8,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.out"
-      });
+      gsap.fromTo(cardRef.current, 
+        { scale: 0.8, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.6, ease: "power2.out" }
+      );
     }, cardRef);
 
     return () => ctx.revert();
@@ -62,22 +60,6 @@ const Game = () => {
     
     if (answerIndex === questions[currentQuestion].correct) {
       setScore(score + 1);
-      gsap.to(".correct-answer", {
-        backgroundColor: "#EAB308",
-        color: "#000",
-        duration: 0.3
-      });
-    } else {
-      gsap.to(".wrong-answer", {
-        backgroundColor: "#EF4444",
-        color: "white",
-        duration: 0.3
-      });
-      gsap.to(".correct-answer", {
-        backgroundColor: "#EAB308",
-        color: "#000",
-        duration: 0.3
-      });
     }
   };
 
@@ -88,12 +70,10 @@ const Game = () => {
       setShowResult(false);
     } else {
       setGameFinished(true);
-      gsap.from(resultRef.current, {
-        scale: 0,
-        rotation: 180,
-        duration: 0.8,
-        ease: "back.out(1.7)"
-      });
+      gsap.fromTo(resultRef.current, 
+        { scale: 0, rotation: 180 },
+        { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.7)" }
+      );
     }
   };
 
@@ -119,15 +99,15 @@ const Game = () => {
         <Navigation />
         
         {/* Art Deco Background Lines */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
           <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
           <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
           <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
           <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          <Card ref={resultRef} className="text-center art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
+        <div className="max-w-4xl mx-auto px-4 py-12 relative z-10">
+          <Card ref={resultRef} className="text-center improved-art-deco-card bg-gray-900/90 border-yellow-500/50 backdrop-blur-sm">
             <CardHeader>
               <CardTitle className="flex items-center justify-center gap-2 text-3xl text-yellow-400 font-[Playfair_Display]">
                 <Trophy className="text-yellow-400" size={32} />
@@ -138,7 +118,7 @@ const Game = () => {
               <div className="text-6xl font-bold text-gradient mb-4">
                 {score}/{questions.length}
               </div>
-              <p className="text-xl text-gray-300 mb-6">
+              <p className="text-xl text-gray-200 mb-6">
                 {getScoreMessage()}
               </p>
               <div className="flex justify-center gap-4">
@@ -159,24 +139,24 @@ const Game = () => {
       <Navigation />
       
       {/* Art Deco Background Lines */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
         <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
         <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
         <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-12">
+      <div className="max-w-4xl mx-auto px-4 py-12 relative z-10">
         <div className="text-center mb-8">
           <h1 className="text-4xl md:text-6xl font-bold text-yellow-400 mb-4 font-[Playfair_Display] art-deco-title">
             Gatsby Quiz Game
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-300">
+          <p className="text-xl text-gray-200">
             Test what you learned about the story!
           </p>
           <div className="flex justify-center items-center gap-4 mt-4">
-            <span className="text-lg text-gray-300">Question {currentQuestion + 1} of {questions.length}</span>
+            <span className="text-lg text-gray-200">Question {currentQuestion + 1} of {questions.length}</span>
             <div className="flex gap-1">
               {Array.from({ length: questions.length }).map((_, i) => (
                 <Star
@@ -186,11 +166,11 @@ const Game = () => {
                 />
               ))}
             </div>
-            <span className="text-lg text-gray-300">Score: {score}</span>
+            <span className="text-lg text-gray-200">Score: {score}</span>
           </div>
         </div>
 
-        <Card ref={cardRef} className="hover-lift art-deco-card bg-black/80 border-yellow-500/30 backdrop-blur-sm">
+        <Card ref={cardRef} className="hover-lift improved-art-deco-card bg-gray-900/90 border-yellow-500/50 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-xl text-yellow-400 font-[Playfair_Display]">
               {questions[currentQuestion].question}
@@ -202,13 +182,13 @@ const Game = () => {
                 <Button
                   key={index}
                   variant="outline"
-                  className={`w-full p-4 text-left justify-start h-auto bg-black/40 border-yellow-500/30 text-gray-300 hover:bg-yellow-500/20 hover:border-yellow-400 ${
+                  className={`w-full p-4 text-left justify-start h-auto bg-gray-800/60 border-yellow-500/50 text-gray-200 hover:bg-yellow-500/20 hover:border-yellow-400 ${
                     showResult && selectedAnswer === index
                       ? index === questions[currentQuestion].correct
-                        ? "correct-answer"
-                        : "wrong-answer"
+                        ? "bg-yellow-500/30 border-yellow-400 text-yellow-100"
+                        : "bg-red-500/30 border-red-400 text-red-100"
                       : showResult && index === questions[currentQuestion].correct
-                      ? "correct-answer"
+                      ? "bg-yellow-500/30 border-yellow-400 text-yellow-100"
                       : ""
                   }`}
                   onClick={() => !showResult && handleAnswer(index)}
