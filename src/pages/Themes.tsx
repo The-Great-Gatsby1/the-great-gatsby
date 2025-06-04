@@ -115,14 +115,14 @@ const Themes = () => {
       <Navigation />
       
       {/* Art Deco Background Lines */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
         <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
         <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
         <div className="absolute bottom-20 right-10 w-28 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-4 py-12">
+      <div className="max-w-6xl mx-auto px-4 py-12 relative z-10">
         <div className="text-center mb-12 fade-in">
           <h1 className="theme-title text-4xl md:text-6xl font-bold text-yellow-400 mb-4 font-[Playfair_Display] art-deco-title">
             Big Ideas in the Story
@@ -137,7 +137,7 @@ const Themes = () => {
           {themes.map((theme, index) => {
             const IconComponent = theme.icon;
             return (
-              <Card key={theme.title} className="theme-card hover-lift fade-in art-deco-card bg-gray-900/95 border-yellow-500/40 backdrop-blur-sm group" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={theme.title} className="theme-card hover-lift fade-in improved-art-deco-card bg-gray-900/90 border-yellow-500/50 backdrop-blur-sm group" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 text-yellow-400 font-[Playfair_Display]">
                     <div className={`p-2 rounded-lg ${getColorClasses(theme.color)} border group-hover:scale-110 transition-transform`}>
@@ -169,7 +169,7 @@ const Themes = () => {
           })}
         </div>
 
-        <Card className="hover-lift art-deco-card bg-gray-900/95 border-yellow-500/40 backdrop-blur-sm">
+        <Card className="hover-lift improved-art-deco-card bg-gray-900/90 border-yellow-500/50 backdrop-blur-sm">
           <CardHeader>
             <CardTitle className="text-center text-yellow-400 font-[Playfair_Display]">Why These Ideas Matter</CardTitle>
           </CardHeader>
