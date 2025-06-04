@@ -1,6 +1,5 @@
-
 import { Link, useLocation } from "react-router-dom";
-import { BookOpen, Users, Map, Palette, BarChart3, Gamepad2 } from "lucide-react";
+import { BookOpen, Users, Map, Palette, BarChart3, Gamepad2, FileText } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
@@ -8,6 +7,7 @@ const Navigation = () => {
   const navItems = [
     { path: "/", label: "Home", icon: BookOpen },
     { path: "/author", label: "Author", icon: Users },
+    { path: "/summary", label: "Summary", icon: FileText },
     { path: "/characters", label: "Characters", icon: Users },
     { path: "/plot", label: "Plot", icon: Map },
     { path: "/themes", label: "Themes", icon: Palette },
