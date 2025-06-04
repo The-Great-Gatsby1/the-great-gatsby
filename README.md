@@ -2,8 +2,7 @@
 
 ## Project info
 
-**URL**:https://github.com/The-Great-Gatsby1/the-great-gatsby/tree/master
-
+**URL**: https://lovable.dev/projects/988bf009-1c3f-41d0-a77b-39ccea57fe9c
 
 ## How can I edit this code?
 
