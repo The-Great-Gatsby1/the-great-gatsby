@@ -10,20 +10,29 @@ const Themes = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".theme-card", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out"
-      });
+      // Fixed GSAP animations with proper opacity values
+      gsap.fromTo(".theme-card", 
+        { y: 60, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.8, 
+          stagger: 0.15, 
+          ease: "power2.out",
+          clearProps: "all" // Clear GSAP properties after animation
+        }
+      );
 
-      gsap.from(".theme-title", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out"
-      });
+      gsap.fromTo(".theme-title", 
+        { y: 40, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 1, 
+          ease: "power2.out",
+          clearProps: "all" // Clear GSAP properties after animation
+        }
+      );
     }, pageRef);
 
     return () => ctx.revert();
@@ -114,8 +123,8 @@ const Themes = () => {
     <div ref={pageRef} className="min-h-screen bg-black">
       <Navigation />
       
-      {/* Art Deco Background Lines */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none">
+      {/* Art Deco Background Lines - Reduced opacity */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-32 left-10 w-32 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
         <div className="absolute top-52 right-20 w-24 h-1 bg-gradient-to-l from-yellow-400 to-transparent"></div>
         <div className="absolute bottom-40 left-20 w-40 h-1 bg-gradient-to-r from-yellow-400 to-transparent"></div>
@@ -123,12 +132,12 @@ const Themes = () => {
       </div>
 
       <div className="max-w-6xl mx-auto px-4 py-12 relative z-10">
-        <div className="text-center mb-12 fade-in">
+        <div className="text-center mb-12">
           <h1 className="theme-title text-4xl md:text-6xl font-bold text-yellow-400 mb-4 font-[Playfair_Display] art-deco-title">
             Big Ideas in the Story
           </h1>
           <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6"></div>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-100 max-w-2xl mx-auto font-medium">
             Explore the deeper meanings and important themes in "The Great Gatsby"
           </p>
         </div>
@@ -137,7 +146,7 @@ const Themes = () => {
           {themes.map((theme, index) => {
             const IconComponent = theme.icon;
             return (
-              <Card key={theme.title} className="theme-card hover-lift fade-in improved-art-deco-card bg-gray-900/90 border-yellow-500/50 backdrop-blur-sm group" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={theme.title} className="theme-card hover-lift bg-gray-800/95 border-yellow-500/60 backdrop-blur-sm group shadow-xl">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 text-yellow-400 font-[Playfair_Display]">
                     <div className={`p-2 rounded-lg ${getColorClasses(theme.color)} border group-hover:scale-110 transition-transform`}>
@@ -149,14 +158,14 @@ const Themes = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-200 leading-relaxed mb-4">
+                  <p className="text-gray-100 leading-relaxed mb-4 font-medium">
                     {theme.description}
                   </p>
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <h4 className="font-semibold mb-2 text-yellow-300">Examples:</h4>
                     <ul className="space-y-1">
                       {theme.examples.map((example, idx) => (
-                        <li key={idx} className="text-gray-200 text-sm flex items-start gap-2">
+                        <li key={idx} className="text-gray-100 text-sm flex items-start gap-2 font-medium">
                           <span className={`w-2 h-2 rounded-full mt-2 ${getColorClasses(theme.color).split(' ')[0].replace('bg-', 'bg-').replace('/30', '/70')}`}></span>
                           {example}
                         </li>
@@ -169,7 +178,7 @@ const Themes = () => {
           })}
         </div>
 
-        <Card className="hover-lift improved-art-deco-card bg-gray-900/90 border-yellow-500/50 backdrop-blur-sm">
+        <Card className="hover-lift bg-gray-800/95 border-yellow-500/60 backdrop-blur-sm shadow-xl">
           <CardHeader>
             <CardTitle className="text-center text-yellow-400 font-[Playfair_Display]">Why These Ideas Matter</CardTitle>
           </CardHeader>
@@ -177,22 +186,22 @@ const Themes = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-semibold mb-3 text-yellow-300">Still Relevant Today</h4>
-                <p className="text-gray-200 leading-relaxed text-sm">
+                <p className="text-gray-100 leading-relaxed text-sm font-medium">
                   These themes connect with readers today because we still care about the American Dream, 
                   social differences, and the emptiness that can come with focusing too much on money and status.
                 </p>
               </div>
               <div>
                 <h4 className="font-semibold mb-3 text-yellow-300">Why It's a Classic</h4>
-                <p className="text-gray-200 leading-relaxed text-sm">
+                <p className="text-gray-100 leading-relaxed text-sm font-medium">
                   Fitzgerald weaves these themes together with beautiful writing and unforgettable symbols 
                   like the green light, the eyes of Dr. T.J. Eckleburg, and the Valley of Ashes.
                 </p>
               </div>
             </div>
-            <div className="mt-6 bg-yellow-500/15 p-6 rounded-lg border border-yellow-500/30">
+            <div className="mt-6 bg-yellow-500/15 p-6 rounded-lg border border-yellow-500/40">
               <h4 className="font-semibold text-yellow-300 mb-2 text-center">Main Message</h4>
-              <p className="text-gray-200 text-center">
+              <p className="text-gray-100 text-center font-medium">
                 "The Great Gatsby" shows how the American Dream can fail, and how chasing money and status 
                 alone leaves people empty. It warns us about building our dreams on illusions rather than reality.
               </p>
