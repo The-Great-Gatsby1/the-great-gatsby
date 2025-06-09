@@ -10,6 +10,11 @@ import Summary from "./pages/Summary";
 import Characters from "./pages/Characters";
 import Plot from "./pages/Plot";
 import Themes from "./pages/Themes";
+import ReadingJourney from "./pages/ReadingJourney";
+import Reflections from "./pages/Reflections";
+import Media from "./pages/Media";
+import Recommendations from "./pages/Recommendations";
+import WorksCited from "./pages/WorksCited";
 import Analysis from "./pages/Analysis";
 import Game from "./pages/Game";
 import NotFound from "./pages/NotFound";
@@ -29,6 +34,11 @@ const App = () => (
           <Route path="/characters" element={<Characters />} />
           <Route path="/plot" element={<Plot />} />
           <Route path="/themes" element={<Themes />} />
+          <Route path="/reading-journey" element={<ReadingJourney />} />
+          <Route path="/reflections" element={<Reflections />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/recommendations" element={<Recommendations />} />
+          <Route path="/works-cited" element={<WorksCited />} />
           <Route path="/analysis" element={<Analysis />} />
           <Route path="/game" element={<Game />} />
           <Route path="*" element={<NotFound />} />
